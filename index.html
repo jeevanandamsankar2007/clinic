@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Clinic — Modern, Trustworthy & Human-Centered Healthcare</title>
+  <meta name="description" content="Experience compassionate medical care, world-class physicians, and modern diagnostic technology in a serene wellness environment. Book your private consultation today.">
+  <meta name="keywords" content="private clinic, luxury healthcare, internal medicine, cardiology, dermatology, pediatrics, medical appointment">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230a4640'><circle cx='12' cy='12' r='10'/><path d='M12 7v10M7 12h10' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. NAVBAR (STICKY / FLOATING GLASSMORPHIC)
+       ========================================================================== -->
+  <header class="site-header" id="navbar">
+    <div class="navbar-inner">
+      <!-- Left: Logo & Tagline -->
+      <a href="#home" class="nav-brand" aria-label="Aura Clinic Home">
+        <div class="brand-logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M12 8v8"/>
+            <path d="M8 12h8"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">AURA CLINIC</span>
+          <span class="brand-tagline">Care. Trust. Wellness.</span>
+        </div>
+      </a>
+
+      <!-- Center: Navigation Menu Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#treatments" class="nav-link">Specialties</a></li>
+          <li><a href="#navigator" class="nav-link">Care Navigator</a></li>
+          <li><a href="#doctors" class="nav-link">Doctors</a></li>
+          <li><a href="#facilities" class="nav-link">Facilities</a></li>
+          <li><a href="#health-calculator" class="nav-link">Health Profiler</a></li>
+          <li><a href="#faq" class="nav-link">FAQs</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: Action CTA, Theme Toggle & Mobile Trigger -->
+      <div class="nav-actions">
+        <!-- Dark / Light Theme Toggle -->
+        <button type="button" class="theme-toggle-btn" id="themeToggle" aria-label="Switch between light and dark mode" title="Switch Theme">
+          <span class="theme-icon sun-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="theme-icon moon-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-trigger-booking" id="navBookBtn">
+          <span>Book Appointment</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </button>
+
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer & Backdrop -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+        <div class="nav-brand">
+          <div class="brand-logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M12 8v8"/>
+              <path d="M8 12h8"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">AURA CLINIC</span>
+            <span class="brand-tagline">Care. Trust. Wellness.</span>
+          </div>
+        </div>
+
+        <!-- Mobile Theme Toggle -->
+        <button type="button" class="theme-toggle-btn mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme">
+          <span class="theme-icon sun-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+          </span>
+          <span class="theme-icon moon-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
+      </div>
+
+      <ul class="mobile-menu-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Our Clinic</a></li>
+        <li><a href="#treatments">Specialties & Care</a></li>
+        <li><a href="#navigator">Care Navigator</a></li>
+        <li><a href="#doctors">Specialist Doctors</a></li>
+        <li><a href="#facilities">Clinical Facilities</a></li>
+        <li><a href="#journey">Patient Journey</a></li>
+        <li><a href="#health-calculator">Longevity & BMI Profiler</a></li>
+        <li><a href="#testimonials">Patient Reviews</a></li>
+        <li><a href="#blog">Health Journal</a></li>
+        <li><a href="#faq">Frequently Asked Questions</a></li>
+        <li><a href="#contact">Contact & Hours</a></li>
+      </ul>
+    </div>
+
+    <div class="mobile-drawer-footer">
+      <button type="button" class="btn btn-primary btn-lg btn-trigger-booking" style="width: 100%;">
+        Book Appointment
+      </button>
+      <button type="button" class="btn btn-secondary btn-trigger-portal" style="width: 100%; justify-content: center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>Patient Portal Login</span>
+      </button>
+      <a href="tel:+18004567890" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>Call: (800) 456-7890</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       2. HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" id="home">
+    <div class="hero-bg-blob"></div>
+    <div class="container hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <div class="badge badge-pulse hero-badge">
+          YOUR HEALTH, OUR PRIORITY
+        </div>
+
+        <h1 class="hero-title">
+          Healthcare That Feels <span class="gradient-text">Personal.</span>
+        </h1>
+
+        <p class="hero-description">
+          Expert medical care, advanced diagnostic technology, and compassionate treatment — all unified in one serene sanctuary.
+        </p>
+
+        <div class="hero-buttons">
+          <button type="button" class="btn btn-primary btn-lg btn-trigger-booking" id="heroBookCta">
+            <span>Book an Appointment</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+          
+          <a href="#treatments" class="btn btn-secondary btn-lg" id="heroExploreCta">
+            <span>Explore Our Services</span>
+          </a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-rating-stars" aria-label="5 out of 5 stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <div>
+            <div class="trust-text">Trusted by 10,000+ patients</div>
+            <div class="trust-sub">4.9/5 Average Satisfaction Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual with Floating Cards -->
+      <div class="hero-visual-wrapper">
+        <div class="hero-image-frame">
+          <img src="assets/images/hero_doctor.jpg" alt="Dr. Eleanor Vance, Lead Physician at Aura Clinic" width="440" height="520" loading="eager">
+        </div>
+
+        <!-- Floating Card 1: 24/7 Patient Support -->
+        <div class="floating-card floating-card-1">
+          <div class="floating-card-icon icon-mint">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="floating-card-title">24/7 Patient Support</div>
+            <div class="floating-card-sub">Immediate physician access</div>
+          </div>
+        </div>
+
+        <!-- Floating Card 2: 15+ Specialists -->
+        <div class="floating-card floating-card-2">
+          <div class="floating-card-icon icon-teal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div>
+            <div class="floating-card-title">15+ Specialists</div>
+            <div class="floating-card-sub">Board-certified leaders</div>
+          </div>
+        </div>
+
+        <!-- Floating Card 3: 10K+ Happy Patients -->
+        <div class="floating-card floating-card-3">
+          <div class="floating-card-icon icon-cyan">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="floating-card-title">10K+ Happy Patients</div>
+            <div class="floating-card-sub">98% satisfaction rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Scroll Explore Prompt -->
+    <div class="hero-scroll-prompt">
+      <a href="#quick-booking" class="scroll-prompt-link" aria-label="Scroll to booking section">
+        <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+        <span class="scroll-text">Explore Clinic</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. QUICK APPOINTMENT BAR (FLOATING PANEL)
+       ========================================================================== -->
+  <section class="quick-booking-section" id="quick-booking" aria-label="Appointment Quick Booking">
+    <div class="container">
+      <div class="quick-booking-card">
+        <div class="quick-booking-header">
+          <div class="quick-booking-title">
+            <span class="quick-booking-title-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </span>
+            <span>Find the right care for you</span>
+          </div>
+          <span class="badge badge-mint">Instant Availability Check</span>
+        </div>
+
+        <form id="quickBookingForm" class="quick-booking-form">
+          <!-- Department -->
+          <div class="form-group">
+            <label for="quickDepartment" class="form-label">
+              <span>Department</span>
+            </label>
+            <div class="form-input-wrapper">
+              <span class="form-icon-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <select id="quickDepartment" class="form-select" required>
+                <option value="" disabled selected>Select Department</option>
+                <option value="general">General Medicine</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="dermatology">Dermatology</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="orthopedics">Orthopedics</option>
+                <option value="dental">Dental Care</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Doctor -->
+          <div class="form-group">
+            <label for="quickDoctor" class="form-label">
+              <span>Select Doctor</span>
+            </label>
+            <div class="form-input-wrapper">
+              <span class="form-icon-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <select id="quickDoctor" class="form-select">
+                <option value="" selected>Any Available Specialist</option>
+                <option value="Dr. Eleanor Vance, MD">Dr. Eleanor Vance (Chief Internist)</option>
+                <option value="Dr. Michael Chen, MD, FACC">Dr. Michael Chen (Cardiologist)</option>
+                <option value="Dr. Elena Vance, MD">Dr. Elena Vance (Dermatologist)</option>
+                <option value="Dr. Julian Rivera, MD, FAAP">Dr. Julian Rivera (Pediatrics / Sports)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Date -->
+          <div class="form-group">
+            <label for="quickDate" class="form-label">
+              <span>Preferred Date</span>
+            </label>
+            <div class="form-input-wrapper">
+              <span class="form-icon-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </span>
+              <input type="date" id="quickDate" class="form-input" required>
+            </div>
+          </div>
+
+          <!-- Time Window -->
+          <div class="form-group">
+            <label for="quickTime" class="form-label">
+              <span>Preferred Time</span>
+            </label>
+            <div class="form-input-wrapper">
+              <span class="form-icon-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <select id="quickTime" class="form-select">
+                <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+                <option value="Afternoon (1:00 PM - 4:00 PM)">Afternoon (1:00 PM - 4:00 PM)</option>
+                <option value="Evening (5:00 PM - 8:00 PM)">Evening (5:00 PM - 8:00 PM)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary quick-booking-btn" id="btnCheckAvailability">
+            <span>Check Availability</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. TRUST SECTION (ANIMATED STATS & ACCREDITATIONS)
+       ========================================================================== -->
+  <section class="trust-stats-section" aria-label="Trust and Statistics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="10000" data-prefix="" data-suffix="+">10,000+</div>
+          <div class="stat-label">Patients Served</div>
+          <div class="stat-sub">Across metropolitan community</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number" data-target="15" data-prefix="" data-suffix="+">15+</div>
+          <div class="stat-label">Medical Specialists</div>
+          <div class="stat-sub">Sub-specialized board certification</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number" data-target="12" data-prefix="" data-suffix="+">12+</div>
+          <div class="stat-label">Years of Excellence</div>
+          <div class="stat-sub">Continuous clinical leadership</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number" data-target="98" data-prefix="" data-suffix="%">98%</div>
+          <div class="stat-label">Patient Satisfaction</div>
+          <div class="stat-sub">Independently audited patient score</div>
+        </div>
+      </div>
+
+      <!-- Trust Badges Row -->
+      <div class="trust-badges-row">
+        <div class="badge-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>JCI Gold Seal of Approval®</span>
+        </div>
+        <div class="badge-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>ISO 9001:2015 Healthcare Certified</span>
+        </div>
+        <div class="badge-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>100% HIPAA Patient Confidentiality</span>
+        </div>
+        <div class="badge-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Top Rated Regional Clinic 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. ABOUT THE CLINIC
+       ========================================================================== -->
+  <section class="section about-section" id="about">
+    <div class="container about-grid">
+      <!-- Left: Media Collage -->
+      <div class="about-media-collage">
+        <div class="about-image-main">
+          <img src="assets/images/about_consultation.jpg" alt="Compassionate doctor-patient consultation at Aura Clinic" width="600" height="480" loading="lazy">
+        </div>
+        <div class="about-badge-card">
+          <div class="about-badge-number">12+</div>
+          <div class="about-badge-label">Years of Compassionate, Unhurried Medicine</div>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="about-content">
+        <span class="badge">ABOUT OUR CLINIC</span>
+        <h2>Where expertise meets genuine care.</h2>
+        <p>
+          At Aura Clinic, we reject the hurried, impersonal model of standard healthcare. We believe true healing begins with unhurried listening, rigorous diagnostic science, and a calming clinical sanctuary engineered for patient ease.
+        </p>
+
+        <ul class="about-features-list">
+          <li class="about-feature-item">
+            <span class="about-feature-check">✓</span>
+            <div>
+              <span class="about-feature-text">Experienced Medical Professionals</span>
+              <span class="about-feature-sub">Board-certified leaders from world-renowned medical institutions.</span>
+            </div>
+          </li>
+          <li class="about-feature-item">
+            <span class="about-feature-check">✓</span>
+            <div>
+              <span class="about-feature-text">Patient-Centered Treatment</span>
+              <span class="about-feature-sub">Unhurried 45-minute appointments designed around your total well-being.</span>
+            </div>
+          </li>
+          <li class="about-feature-item">
+            <span class="about-feature-check">✓</span>
+            <div>
+              <span class="about-feature-text">Modern Medical Technology</span>
+              <span class="about-feature-sub">High-precision diagnostic imaging and automated in-house laboratory.</span>
+            </div>
+          </li>
+        </ul>
+
+        <button type="button" class="btn btn-primary btn-lg btn-trigger-booking" id="aboutLearnMoreBtn">
+          <span>Learn More About Us</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. SPECIALTIES / SERVICES
+       ========================================================================== -->
+  <section class="section services-section" id="treatments">
+    <div class="container">
+      <div class="section-header center">
+        <span class="badge">COMPREHENSIVE DEPARTMENTS</span>
+        <h2>Care for every stage of your health journey.</h2>
+        <p>Multidisciplinary specialties under one roof, integrating evidence-based medicine with personalized wellness plans.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="services-filter-tabs">
+        <button type="button" class="filter-tab-btn active" data-filter="all">All Specialties</button>
+        <button type="button" class="filter-tab-btn" data-filter="primary">Primary Care</button>
+        <button type="button" class="filter-tab-btn" data-filter="specialized">Specialized Medicine</button>
+        <button type="button" class="filter-tab-btn" data-filter="wellness">Aesthetics & Oral Health</button>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="services-grid">
+        <!-- 1. General Medicine -->
+        <article class="service-card" data-category="primary" data-service="general">
+          <div>
+            <div class="service-card-top">
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  <path d="M12 5v14"/>
+                  <path d="M5 12h14"/>
+                </svg>
+              </div>
+              <span class="service-tag">Primary Care</span>
+            </div>
+            <h3 class="service-name">General Medicine</h3>
+            <p class="service-desc">Comprehensive care for everyday health needs, preventative health screenings, and tailored longevity plans.</p>
+          </div>
+          <div class="service-card-bottom">
+            <span class="service-link">View Department Details</span>
+            <span class="service-arrow-btn">→</span>
+          </div>
+        </article>
+
+        <!-- 2. Cardiology -->
+        <article class="service-card" data-category="specialized" data-service="cardiology">
+          <div>
+            <div class="service-card-top">
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+              </div>
+              <span class="service-tag">Cardiology</span>
+            </div>
+            <h3 class="service-name">Cardiology</h3>
+            <p class="service-desc">Advanced heart care from experienced specialists featuring digital echocardiography and vascular profiling.</p>
+          </div>
+          <div class="service-card-bottom">
+            <span class="service-link">View Department Details</span>
+            <span class="service-arrow-btn">→</span>
+          </div>
+        </article>
+
+        <!-- 3. Dermatology -->
+        <article class="service-card" data-category="wellness" data-service="dermatology">
+          <div>
+            <div class="service-card-top">
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                  <path d="M2 12h20"/>
+                </svg>
+              </div>
+              <span class="service-tag">Dermatology</span>
+            </div>
+            <h3 class="service-name">Dermatology</h3>
+            <p class="service-desc">Personalized skin and hair treatments with state-of-the-art dermatoscopy and restorative clinical dermatology.</p>
+          </div>
+          <div class="service-card-bottom">
+            <span class="service-link">View Department Details</span>
+            <span class="service-arrow-btn">→</span>
+          </div>
+        </article>
+
+        <!-- 4. Pediatrics -->
+        <article class="service-card" data-category="primary" data-service="pediatrics">
+          <div>
+            <div class="service-card-top">
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a5 5 0 0 0-5 5v3a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5Z"/>
+                  <path d="M19 11v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </div>
+              <span class="service-tag">Pediatrics</span>
+            </div>
+            <h3 class="service-name">Pediatrics</h3>
+            <p class="service-desc">Compassionate healthcare for growing families in a calming, child-friendly, anxiety-free clinical environment.</p>
+          </div>
+          <div class="service-card-bottom">
+            <span class="service-link">View Department Details</span>
+            <span class="service-arrow-btn">→</span>
+          </div>
+        </article>
+
+        <!-- 5. Orthopedics -->
+        <article class="service-card" data-category="specialized" data-service="orthopedics">
+          <div>
+            <div class="service-card-top">
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 20V10"/>
+                  <path d="M12 20V4"/>
+                  <path d="M6 20v-6"/>
+                </svg>
+              </div>
+              <span class="service-tag">Orthopedics</span>
+            </div>
+            <h3 class="service-name">Orthopedics</h3>
+            <p class="service-desc">Expert care for bones, joints and mobility, non-surgical sports injury treatments, and regenerative joint therapies.</p>
+          </div>
+          <div class="service-card-bottom">
+            <span class="service-link">View Department Details</span>
+            <span class="service-arrow-btn">→</span>
+          </div>
+        </article>
+
+        <!-- 6. Dental Care -->
+        <article class="service-card" data-category="wellness" data-service="dental">
+          <div>
+            <div class="service-card-top">
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 4c-3.3 0-6 2.7-6 6v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8c0-3.3-2.7-6-6-6Z"/>
+                  <path d="M9 12h6"/>
+                </svg>
+              </div>
+              <span class="service-tag">Dental Care</span>
+            </div>
+            <h3 class="service-name">Dental Care</h3>
+            <p class="service-desc">Complete preventive, restorative, and cosmetic oral care featuring painless ultrasonic scaling and digital imaging.</p>
+          </div>
+          <div class="service-card-bottom">
+            <span class="service-link">View Department Details</span>
+            <span class="service-arrow-btn">→</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6B. INTELLIGENT CARE NAVIGATOR (SYMPTOM & SPECIALTY MATCHER)
+       ========================================================================== -->
+  <section class="section navigator-section" id="navigator">
+    <div class="navigator-bg-glow"></div>
+    <div class="container">
+      <div class="section-header center">
+        <span class="badge badge-mint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          INTELLIGENT CARE NAVIGATOR
+        </span>
+        <h2>Find the right specialist for your symptoms.</h2>
+        <p>Unsure which department you need? Select what you are experiencing to view instant physician matching, diagnostic tests, and tailored scheduling.</p>
+      </div>
+
+      <div class="navigator-container">
+        <!-- Step 1: Symptom Chips Selector -->
+        <div class="navigator-symptoms-panel">
+          <div class="navigator-panel-title">
+            <span class="navigator-step-num">Step 1</span>
+            <h3>Select your primary health focus or symptoms:</h3>
+          </div>
+
+          <div class="symptom-chips-grid">
+            <button type="button" class="symptom-chip active" data-symptom="fatigue">
+              <span class="symptom-icon">⚡</span>
+              <div class="symptom-info">
+                <strong>Chronic Fatigue & Low Energy</strong>
+                <span>Unrefreshing sleep, mental fog, lethargy</span>
+              </div>
+            </button>
+
+            <button type="button" class="symptom-chip" data-symptom="cardio">
+              <span class="symptom-icon">❤️</span>
+              <div class="symptom-info">
+                <strong>Heart Palpitations & BP Check</strong>
+                <span>Chest flutter, shortness of breath, hypertension</span>
+              </div>
+            </button>
+
+            <button type="button" class="symptom-chip" data-symptom="skin">
+              <span class="symptom-icon">✨</span>
+              <div class="symptom-info">
+                <strong>Skin Flare-ups, Acne & Mole Scan</strong>
+                <span>Pigment change, eczema, hair loss, dermoscopy</span>
+              </div>
+            </button>
+
+            <button type="button" class="symptom-chip" data-symptom="joints">
+              <span class="symptom-icon">🏃</span>
+              <div class="symptom-info">
+                <strong>Joint Pain, Spine & Sports Injury</strong>
+                <span>Knee stiffness, tendon sprain, posture pain</span>
+              </div>
+            </button>
+
+            <button type="button" class="symptom-chip" data-symptom="pediatric">
+              <span class="symptom-icon">🧸</span>
+              <div class="symptom-info">
+                <strong>Childhood Health & Pediatric Care</strong>
+                <span>Childhood fever, vaccinations, growth milestones</span>
+              </div>
+            </button>
+
+            <button type="button" class="symptom-chip" data-symptom="dental">
+              <span class="symptom-icon">🦷</span>
+              <div class="symptom-info">
+                <strong>Oral Health & Ultrasonic Cleanse</strong>
+                <span>Tooth sensitivity, preventive scaling, alignment</span>
+              </div>
+            </button>
+
+            <button type="button" class="symptom-chip" data-symptom="longevity">
+              <span class="symptom-icon">🧬</span>
+              <div class="symptom-info">
+                <strong>Executive Longevity & Biomarkers</strong>
+                <span>Proactive baseline scan, vascular profiling</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Dynamic Care Recommendation Card -->
+        <div class="navigator-result-card" id="navigatorResultCard">
+          <div class="navigator-result-header">
+            <div class="result-badge-row">
+              <span class="badge badge-mint" id="navResultDepartment">General & Preventative Medicine</span>
+              <span class="result-priority-tag" id="navResultPriority">Personalized Care Recommendation</span>
+            </div>
+            <h3 id="navResultTitle">Fatigue & Cellular Longevity Evaluation</h3>
+            <p id="navResultSummary">A whole-body diagnostic assessment designed to uncover occult micronutrient depletion, thyroid imbalances, and subtle metabolic dysregulation.</p>
+          </div>
+
+          <div class="navigator-result-grid">
+            <div class="nav-result-item">
+              <span class="nav-result-label">Matched Lead Physician</span>
+              <div class="nav-matched-doctor" id="navMatchedDoctor">
+                <img src="assets/images/hero_doctor.jpg" alt="Dr. Eleanor Vance, MD" class="nav-doc-thumb" id="navDocThumb">
+                <div>
+                  <strong id="navDocName">Dr. Eleanor Vance, MD</strong>
+                  <span id="navDocTitle">Chief Internist (14+ yrs exp)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="nav-result-item">
+              <span class="nav-result-label">Recommended Diagnostic Panel</span>
+              <ul class="nav-protocol-list" id="navProtocols">
+                <li>Complete Thyroid Panel & Free T3/T4</li>
+                <li>Serum Ferritin, B12 & Vitamin D3 Profile</li>
+                <li>High-Sensitivity CRP & Fasting Insulin</li>
+              </ul>
+            </div>
+
+            <div class="nav-result-item">
+              <span class="nav-result-label">Visit Duration & Preparation</span>
+              <div class="nav-visit-meta">
+                <div><strong>Duration:</strong> <span id="navDuration">45-60 min comprehensive consultation</span></div>
+                <div><strong>Preparation:</strong> <span id="navPrep">Fasting recommended if booking a morning slot</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="navigator-result-footer">
+            <button type="button" class="btn btn-primary btn-lg" id="btnBookMatchedCare">
+              <span>Book This Recommended Care</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <span class="nav-footer-note">Includes instant confirmation • Direct physician messaging included</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. FEATURED DOCTORS
+       ========================================================================== -->
+  <section class="section doctors-section" id="doctors">
+    <div class="container">
+      <div class="section-header center">
+        <span class="badge">OUR CLINICAL FACULTY</span>
+        <h2>Meet the people behind your care.</h2>
+        <p>Distinguished physicians who combine clinical rigor with genuine empathy and attentive listening.</p>
+      </div>
+
+      <!-- Doctors Filter Tabs & Search Toolbar -->
+      <div class="doctors-toolbar">
+        <div class="doctor-filter-tabs">
+          <button type="button" class="doc-filter-btn active" data-specialty="all">All Specialists</button>
+          <button type="button" class="doc-filter-btn" data-specialty="internal">Internal Medicine</button>
+          <button type="button" class="doc-filter-btn" data-specialty="cardiology">Cardiology</button>
+          <button type="button" class="doc-filter-btn" data-specialty="dermatology">Dermatology</button>
+          <button type="button" class="doc-filter-btn" data-specialty="pediatrics">Pediatrics & Sports</button>
+        </div>
+
+        <div class="doctor-search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="doctorSearchInput" placeholder="Search doctor by name or specialty..." aria-label="Search doctors">
+          <button type="button" class="search-clear-btn" id="doctorSearchClear" style="display: none;" aria-label="Clear search">×</button>
+        </div>
+      </div>
+
+      <div class="doctors-grid" id="doctorsGrid">
+        <!-- Doctor 1: Dr. Eleanor Vance -->
+        <div class="doctor-card" data-specialty="internal" data-name="Eleanor Vance Internal Medicine">
+          <div class="doctor-photo-wrap">
+            <img src="assets/images/hero_doctor.jpg" alt="Dr. Eleanor Vance, MD" width="320" height="300" loading="lazy">
+            <span class="doctor-exp-badge">14+ Years Exp</span>
+          </div>
+          <div class="doctor-info">
+            <span class="doctor-specialty">Internal Medicine</span>
+            <h3 class="doctor-name">Dr. Eleanor Vance, MD</h3>
+            <div class="doctor-meta-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Mon – Thu (9 AM - 4 PM)</span>
+            </div>
+            <div class="doctor-actions">
+              <button type="button" class="btn btn-secondary btn-sm btn-view-doctor" data-doctor="eleanor">View Profile</button>
+              <button type="button" class="btn btn-primary btn-sm btn-book-doctor" data-doctor-name="Dr. Eleanor Vance, MD">Book Visit</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 2: Dr. Michael Chen -->
+        <div class="doctor-card" data-specialty="cardiology" data-name="Michael Chen Cardiology Heart">
+          <div class="doctor-photo-wrap">
+            <img src="assets/images/doctor_marcus.jpg" alt="Dr. Michael Chen, MD, FACC" width="320" height="300" loading="lazy">
+            <span class="doctor-exp-badge">16+ Years Exp</span>
+          </div>
+          <div class="doctor-info">
+            <span class="doctor-specialty">Cardiology</span>
+            <h3 class="doctor-name">Dr. Michael Chen, MD</h3>
+            <div class="doctor-meta-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Tue – Sat (8:30 AM - 3:30 PM)</span>
+            </div>
+            <div class="doctor-actions">
+              <button type="button" class="btn btn-secondary btn-sm btn-view-doctor" data-doctor="michael">View Profile</button>
+              <button type="button" class="btn btn-primary btn-sm btn-book-doctor" data-doctor-name="Dr. Michael Chen, MD, FACC">Book Visit</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 3: Dr. Elena Vance -->
+        <div class="doctor-card" data-specialty="dermatology" data-name="Elena Vance Dermatology Skin">
+          <div class="doctor-photo-wrap">
+            <img src="assets/images/doctor_sarah.jpg" alt="Dr. Elena Vance, MD" width="320" height="300" loading="lazy">
+            <span class="doctor-exp-badge">12+ Years Exp</span>
+          </div>
+          <div class="doctor-info">
+            <span class="doctor-specialty">Dermatology</span>
+            <h3 class="doctor-name">Dr. Elena Vance, MD</h3>
+            <div class="doctor-meta-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Mon, Wed, Fri (10 AM - 6 PM)</span>
+            </div>
+            <div class="doctor-actions">
+              <button type="button" class="btn btn-secondary btn-sm btn-view-doctor" data-doctor="elena">View Profile</button>
+              <button type="button" class="btn btn-primary btn-sm btn-book-doctor" data-doctor-name="Dr. Elena Vance, MD">Book Visit</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 4: Dr. Julian Rivera -->
+        <div class="doctor-card" data-specialty="pediatrics" data-name="Julian Rivera Pediatrics Sports Children">
+          <div class="doctor-photo-wrap">
+            <img src="assets/images/doctor_julian.jpg" alt="Dr. Julian Rivera, MD, FAAP" width="320" height="300" loading="lazy">
+            <span class="doctor-exp-badge">11+ Years Exp</span>
+          </div>
+          <div class="doctor-info">
+            <span class="doctor-specialty">Pediatrics & Sports</span>
+            <h3 class="doctor-name">Dr. Julian Rivera, MD</h3>
+            <div class="doctor-meta-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Mon – Fri (9 AM - 5 PM)</span>
+            </div>
+            <div class="doctor-actions">
+              <button type="button" class="btn btn-secondary btn-sm btn-view-doctor" data-doctor="julian">View Profile</button>
+              <button type="button" class="btn btn-primary btn-sm btn-book-doctor" data-doctor-name="Dr. Julian Rivera, MD, FAAP">Book Visit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Doctors Found State -->
+      <div id="noDoctorsMessage" class="no-results-message" style="display: none;">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        <h4>No specialists match your search</h4>
+        <p>Try searching with another keyword or select “All Specialists” to view all clinical faculty.</p>
+        <button type="button" class="btn btn-secondary btn-sm" id="btnResetDocFilter">Reset Filter</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. WHY CHOOSE US (ASYMMETRICAL LAYOUT + TIMELINE)
+       ========================================================================== -->
+  <section class="section why-us-section" id="why-us">
+    <div class="container why-us-grid">
+      <!-- Left Column: Sticky Narrative -->
+      <div class="why-us-left">
+        <span class="badge">THE AURA DIFFERENCE</span>
+        <h2 class="why-us-title">
+          More than treatment.<br>
+          A better healthcare experience.
+        </h2>
+        <p class="why-us-lead">
+          We designed our entire clinical workflow around the patient journey. From acoustic privacy in consultation rooms to direct doctor messaging, your comfort and longevity come first.
+        </p>
+
+        <div class="why-us-highlight-box">
+          <div class="why-us-highlight-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="why-us-highlight-text">
+            <h4>Clinical Excellence Guaranteed</h4>
+            <p>Every specialist is board-certified and routinely peer-reviewed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Vertical Timeline -->
+      <div class="timeline-wrapper">
+        <div class="timeline-line"></div>
+        <div class="timeline-items">
+          <!-- 01 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">01</div>
+            <h3 class="timeline-title">Experienced Specialists</h3>
+            <p class="timeline-desc">Our medical staff is composed of faculty physicians and department heads with decades of dedicated subspecialty experience.</p>
+          </div>
+
+          <!-- 02 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">02</div>
+            <h3 class="timeline-title">Advanced Diagnostics</h3>
+            <p class="timeline-desc">On-site high-field 3T MRI, low-dose digital radiography, and automated pathology lab providing same-day clinical answers.</p>
+          </div>
+
+          <!-- 03 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">03</div>
+            <h3 class="timeline-title">Personalized Treatment</h3>
+            <p class="timeline-desc">No generic protocols. Your treatment blueprint integrates genetics, lifestyle, preventative markers, and personal preferences.</p>
+          </div>
+
+          <!-- 04 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">04</div>
+            <h3 class="timeline-title">Comfortable Environment</h3>
+            <p class="timeline-desc">Thoughtfully designed Scandinavian architectural spaces featuring natural light, organic greenery, and zero clinical stress.</p>
+          </div>
+
+          <!-- 05 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">05</div>
+            <h3 class="timeline-title">Continuous Patient Support</h3>
+            <p class="timeline-desc">24/7 digital chat with our nursing concierge, rapid prescription refills, and proactive wellness milestones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. FACILITIES (HORIZONTAL SCROLLING CAROUSEL)
+       ========================================================================== -->
+  <section class="section facilities-section" id="facilities">
+    <div class="container">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem;">
+        <div class="section-header" style="margin-bottom: 0;">
+          <span class="badge">CAMPUS & INFRASTRUCTURE</span>
+          <h2>Designed for calm, precision and safety.</h2>
+          <p>Explore our purpose-built medical suites engineered for patient privacy, comfort, and state-of-the-art clinical efficacy.</p>
+        </div>
+
+        <div class="facilities-carousel-controls">
+          <button type="button" class="btn-icon" id="facilityPrevBtn" aria-label="Previous facility">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button type="button" class="btn-icon" id="facilityNextBtn" aria-label="Next facility">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="facilities-scroll-container" id="facilitiesScroll">
+        <!-- 1. Modern Consultation Rooms -->
+        <div class="facility-card">
+          <img src="assets/images/facility_suite.jpg" alt="Modern Consultation Suites at Aura Clinic" class="facility-card-image" loading="lazy">
+          <div class="facility-card-overlay">
+            <span class="badge facility-badge">Acoustic Privacy</span>
+            <h3 class="facility-name">Private Consultation Rooms</h3>
+            <p class="facility-desc">Ergonomic seating, warm oak wood finishes, and large screens for shared diagnostic reviews with your physician.</p>
+          </div>
+        </div>
+
+        <!-- 2. Diagnostic Center -->
+        <div class="facility-card">
+          <img src="assets/images/facility_diagnostics.jpg" alt="Advanced Diagnostic Center" class="facility-card-image" loading="lazy">
+          <div class="facility-card-overlay">
+            <span class="badge facility-badge">High Precision</span>
+            <h3 class="facility-name">Advanced Diagnostic Center</h3>
+            <p class="facility-desc">Quiet 3T MRI, low-dose digital CT, and precision ultrasound with ambient calming lighting for patient ease.</p>
+          </div>
+        </div>
+
+        <!-- 3. Pharmacy & Apothecary -->
+        <div class="facility-card">
+          <img src="assets/images/facility_pharmacy.jpg" alt="Clinical Pharmacy and Apothecary" class="facility-card-image" loading="lazy">
+          <div class="facility-card-overlay">
+            <span class="badge facility-badge">In-House</span>
+            <h3 class="facility-name">Clinical Pharmacy</h3>
+            <p class="facility-desc">Full prescription dispensing, customized vitamin formulations, and home delivery coordination before you exit.</p>
+          </div>
+        </div>
+
+        <!-- 4. Dental & Aesthetic Studio -->
+        <div class="facility-card">
+          <img src="assets/images/facility_dental.jpg" alt="Preventative and Cosmetic Dental Suite at Aura Clinic" class="facility-card-image" loading="lazy">
+          <div class="facility-card-overlay">
+            <span class="badge facility-badge">Private Suite</span>
+            <h3 class="facility-name">Dental & Aesthetic Studio</h3>
+            <p class="facility-desc">Ultrasonic gentle scaling, 3D bio-ceramic digital scans, and floor-to-ceiling tranquil bamboo garden vistas.</p>
+          </div>
+        </div>
+
+        <!-- 5. Architectural Medical Pavilion -->
+        <div class="facility-card">
+          <img src="assets/images/facility_exterior.jpg" alt="Aura Clinic Architectural Medical Pavilion Grounds" class="facility-card-image" loading="lazy">
+          <div class="facility-card-overlay">
+            <span class="badge facility-badge">Campus Grounds</span>
+            <h3 class="facility-name">Nordic Wellness Pavilion</h3>
+            <p class="facility-desc">Minimalist biophilic design, landscaped medicinal gardens, tranquil reflecting pond, and private concierge drop-off.</p>
+          </div>
+        </div>
+
+        <!-- 6. Patient Lounge -->
+        <div class="facility-card">
+          <img src="assets/images/about_consultation.jpg" alt="Patient Lounge" class="facility-card-image" loading="lazy">
+          <div class="facility-card-overlay">
+            <span class="badge facility-badge">Serene Comfort</span>
+            <h3 class="facility-name">Patient Wellness Lounge</h3>
+            <p class="facility-desc">Complimentary organic botanical teas, high-speed Wi-Fi, air purification, and peaceful garden views.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       10. PATIENT JOURNEY (INTERACTIVE STEPPER)
+       ========================================================================== -->
+  <section class="section journey-section" id="journey">
+    <div class="container">
+      <div class="section-header center">
+        <span class="badge">TRANSPARENT CARE PROTOCOL</span>
+        <h2>How your health journey unfolds.</h2>
+        <p>A seamless, predictable, and stress-free care experience from initial scheduling through lifelong recovery.</p>
+      </div>
+
+      <div class="journey-stepper-wrapper">
+        <!-- Step Navigation Bar -->
+        <div class="journey-steps-nav">
+          <div class="journey-steps-progress-bar">
+            <div class="journey-progress-fill"></div>
+          </div>
+
+          <button type="button" class="journey-step-btn active" data-step="0">
+            <span class="journey-step-circle">01</span>
+            <span class="journey-step-label">Book Appointment</span>
+          </button>
+
+          <button type="button" class="journey-step-btn" data-step="1">
+            <span class="journey-step-circle">02</span>
+            <span class="journey-step-label">Meet Your Doctor</span>
+          </button>
+
+          <button type="button" class="journey-step-btn" data-step="2">
+            <span class="journey-step-circle">03</span>
+            <span class="journey-step-label">Get Diagnosis</span>
+          </button>
+
+          <button type="button" class="journey-step-btn" data-step="3">
+            <span class="journey-step-circle">04</span>
+            <span class="journey-step-label">Personalized Care</span>
+          </button>
+
+          <button type="button" class="journey-step-btn" data-step="4">
+            <span class="journey-step-circle">05</span>
+            <span class="journey-step-label">Follow-up & Recovery</span>
+          </button>
+        </div>
+
+        <!-- Step Interactive Details Display Card -->
+        <div class="journey-details-card">
+          <div class="journey-details-text">
+            <h3 id="journeyTitle">Step 01 — Seamless Appointment Booking</h3>
+            <p id="journeyDesc">Reserve your appointment via our intuitive digital booking portal or private concierge hotline. Choose your preferred physician, time window, and clinical consultation preferences in seconds.</p>
+            <div class="journey-feature-tags" id="journeyTags">
+              <span class="journey-feature-tag">Instant Confirmation</span>
+              <span class="journey-feature-tag">SMS / Calendar Sync</span>
+              <span class="journey-feature-tag">Flexible Rescheduling</span>
+            </div>
+          </div>
+
+          <div class="journey-details-aside">
+            <span class="journey-aside-title">AURA METRIC</span>
+            <div class="journey-aside-stat" id="journeyStat">Under 2 Min</div>
+            <p class="journey-aside-desc" id="journeyStatDesc">Average time to schedule without hold times or confusing phone trees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       11. TESTIMONIALS (CAROUSEL)
+       ========================================================================== -->
+  <section class="section testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header center">
+        <span class="badge">VERIFIED EXPERIENCES</span>
+        <h2>Trusted by the people we care for.</h2>
+        <p>Real stories from patients whose lives and health trajectories were transformed at Aura Clinic.</p>
+      </div>
+
+      <div class="testimonials-carousel-wrapper">
+        <div class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 stars rating">★★★★★</div>
+          <blockquote class="testimonial-quote" id="testQuote">
+            “The atmosphere at Aura Clinic completely redefined what healthcare feels like. Dr. Vance spent a full hour listening to my symptoms without rushing. For the first time in years, I felt genuinely heard and understood.”
+          </blockquote>
+          
+          <div class="testimonial-author-box">
+            <div class="testimonial-avatar" id="testAvatar">CM</div>
+            <div class="testimonial-author-info">
+              <div class="testimonial-author-name" id="testAuthor">Charlotte Montgomery</div>
+              <div class="testimonial-author-dept" id="testDept">Executive Preventive Health & Cardiology</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Navigation -->
+        <div class="testimonials-nav">
+          <button type="button" class="btn-icon" id="testPrevBtn" aria-label="Previous review">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          
+          <div class="testimonial-dots">
+            <span class="testimonial-dot active" data-index="0"></span>
+            <span class="testimonial-dot" data-index="1"></span>
+            <span class="testimonial-dot" data-index="2"></span>
+            <span class="testimonial-dot" data-index="3"></span>
+          </div>
+
+          <button type="button" class="btn-icon" id="testNextBtn" aria-label="Next review">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       11B. PERSONALIZED HEALTH & LONGEVITY PROFILER
+       ========================================================================== -->
+  <section class="section health-calc-section" id="health-calculator">
+    <div class="health-calc-bg-glow"></div>
+    <div class="container">
+      <div class="section-header center">
+        <span class="badge badge-mint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          CLINICAL WELLNESS METRICS
+        </span>
+        <h2>Calculate your personalized longevity profile.</h2>
+        <p>Interactive body mass index and metabolic longevity assessment calibrated against preventative cardiovascular benchmarks.</p>
+      </div>
+
+      <div class="health-calc-card">
+        <!-- Left: Input Controls -->
+        <div class="health-calc-inputs">
+          <div class="calc-unit-switcher">
+            <button type="button" class="unit-toggle-btn active" id="btnUnitMetric" data-unit="metric">Metric (cm / kg)</button>
+            <button type="button" class="unit-toggle-btn" id="btnUnitImperial" data-unit="imperial">Imperial (ft / lbs)</button>
+          </div>
+
+          <!-- Metric Height -->
+          <div class="form-group" id="groupHeightMetric">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <label for="calcHeight" class="form-label">Height (cm)</label>
+              <span class="calc-live-val" id="valHeightDisplay">175 cm</span>
+            </div>
+            <input type="range" id="calcHeightSlider" min="120" max="220" value="175" class="calc-slider">
+            <div class="form-input-wrapper" style="margin-top: 0.5rem;">
+              <input type="number" id="calcHeight" class="form-input" value="175" min="100" max="250">
+            </div>
+          </div>
+
+          <!-- Imperial Height (Hidden by default) -->
+          <div class="form-group" id="groupHeightImperial" style="display: none;">
+            <label class="form-label">Height (Feet & Inches)</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <input type="number" id="calcHeightFt" class="form-input" placeholder="Feet" value="5" min="3" max="7">
+              <input type="number" id="calcHeightIn" class="form-input" placeholder="Inches" value="9" min="0" max="11">
+            </div>
+          </div>
+
+          <!-- Weight -->
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <label for="calcWeight" class="form-label" id="lblWeight">Weight (kg)</label>
+              <span class="calc-live-val" id="valWeightDisplay">70 kg</span>
+            </div>
+            <input type="range" id="calcWeightSlider" min="35" max="160" value="70" class="calc-slider">
+            <div class="form-input-wrapper" style="margin-top: 0.5rem;">
+              <input type="number" id="calcWeight" class="form-input" value="70" min="20" max="300">
+            </div>
+          </div>
+
+          <!-- Age & Activity -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label for="calcAge" class="form-label">Age</label>
+              <input type="number" id="calcAge" class="form-input" value="38" min="16" max="100">
+            </div>
+
+            <div class="form-group">
+              <label for="calcActivity" class="form-label">Activity Level</label>
+              <select id="calcActivity" class="form-select">
+                <option value="sedentary">Sedentary (Desk)</option>
+                <option value="moderate" selected>Moderate (2-3x / wk)</option>
+                <option value="active">Active (4-6x / wk)</option>
+                <option value="athlete">High (Daily Athletic)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="btnRecalculateProfile" style="width: 100%; margin-top: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span>Update Health Profile</span>
+          </button>
+        </div>
+
+        <!-- Right: Animated Output & Clinical Guidance -->
+        <div class="health-calc-output">
+          <div class="calc-score-box">
+            <span class="calc-score-caption">Estimated Body Mass Index</span>
+            <div class="calc-score-num" id="calcBmiScore">22.9</div>
+            <div class="calc-category-pill pill-optimal" id="calcCategoryPill">
+              <span>●</span>
+              <span id="calcCategoryText">Optimal Range (18.5 – 24.9)</span>
+            </div>
+          </div>
+
+          <!-- Gauge spectrum bar -->
+          <div class="bmi-spectrum-bar">
+            <div class="spectrum-segment seg-under" title="Underweight (< 18.5)"></div>
+            <div class="spectrum-segment seg-optimal" title="Optimal (18.5 - 24.9)"></div>
+            <div class="spectrum-segment seg-over" title="Elevated (25.0 - 29.9)"></div>
+            <div class="spectrum-segment seg-obese" title="Higher Attention (30.0+)"></div>
+            <div class="spectrum-indicator" id="spectrumIndicator" style="left: 45%;"></div>
+          </div>
+
+          <div class="calc-insights-box">
+            <h4>Physician Longevity Assessment</h4>
+            <p id="calcAdviceText">Your BMI indicates a well-balanced metabolic baseline. To maintain optimal endothelial and lipid health, we advise annual baseline lipid profiling (ApoB), regular VO2 max cardio intervals, and metabolic screening.</p>
+            
+            <div class="calc-recommended-tests" id="calcTestsContainer">
+              <span class="calc-test-chip">✓ Annual ApoB & Lipid Subfraction</span>
+              <span class="calc-test-chip">✓ Fasting Glucose & Insulin (HOMA-IR)</span>
+              <span class="calc-test-chip">✓ Resting ECG & Blood Pressure</span>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-secondary btn-trigger-booking" id="btnBookFromCalc" style="width: 100%; justify-content: center;">
+            <span>Schedule Preventative Longevity Consultation</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       12. HEALTH TIPS / BLOG
+       ========================================================================== -->
+  <section class="section blog-section" id="blog">
+    <div class="container">
+      <div class="section-header center">
+        <span class="badge">CLINICAL INSIGHTS</span>
+        <h2>Better health starts with better information.</h2>
+        <p>Actionable, physician-reviewed articles and preventive healthcare advice from our specialist faculty.</p>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Blog 1 -->
+        <article class="blog-card">
+          <div class="blog-thumb-wrap">
+            <img src="assets/images/wellness_habits.jpg" alt="Health warning signs" loading="lazy">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta-top">
+              <span class="blog-category">Preventative Care</span>
+              <span class="blog-date">Oct 1, 2026</span>
+            </div>
+            <h3 class="blog-title">5 Subtle Health Warning Signs You Should Never Ignore</h3>
+            <button type="button" class="blog-link btn-read-article" data-article="signs">
+              <span>Read Article</span>
+              <span>→</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Blog 2 -->
+        <article class="blog-card">
+          <div class="blog-thumb-wrap">
+            <img src="assets/images/about_consultation.jpg" alt="Doctor explaining checkups" loading="lazy">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta-top">
+              <span class="blog-category">Clinical Wellness</span>
+              <span class="blog-date">Sep 24, 2026</span>
+            </div>
+            <h3 class="blog-title">How Regular Health Checkups Alter Long-Term Longevity</h3>
+            <button type="button" class="blog-link btn-read-article" data-article="checkups">
+              <span>Read Article</span>
+              <span>→</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Blog 3 -->
+        <article class="blog-card">
+          <div class="blog-thumb-wrap">
+            <img src="assets/images/wellness_habits.jpg" alt="Lifestyle micro-habits" loading="lazy">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta-top">
+              <span class="blog-category">Lifestyle Medicine</span>
+              <span class="blog-date">Sep 18, 2026</span>
+            </div>
+            <h3 class="blog-title">Four Micro-Habits for Sustained Cardiovascular Vitality</h3>
+            <button type="button" class="blog-link btn-read-article" data-article="habits">
+              <span>Read Article</span>
+              <span>→</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Blog 4 -->
+        <article class="blog-card">
+          <div class="blog-thumb-wrap">
+            <img src="assets/images/hero_doctor.jpg" alt="Preventative healthcare consultation" loading="lazy">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta-top">
+              <span class="blog-category">Family Health</span>
+              <span class="blog-date">Sep 10, 2026</span>
+            </div>
+            <h3 class="blog-title">Understanding Multi-Generational Preventative Care</h3>
+            <button type="button" class="blog-link btn-read-article" data-article="preventative">
+              <span>Read Article</span>
+              <span>→</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       13. EMERGENCY / QUICK CONTACT SECTION
+       ========================================================================== -->
+  <section class="section emergency-section" id="emergency">
+    <div class="emergency-bg-pattern"></div>
+    <div class="container emergency-card-wrapper">
+      <div class="emergency-content">
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);">
+          RAPID CLINICAL TRIAGE
+        </span>
+        <h2>Need immediate medical assistance?</h2>
+        <p>Our dedicated triage team and emergency physicians are available 24 hours a day, 7 days a week. For acute symptoms, rapid consultation, or urgent transfers, contact us immediately.</p>
+        
+        <div class="emergency-action-buttons">
+          <a href="tel:+18004567890" class="btn btn-emergency-call btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call Clinic Now</span>
+          </a>
+
+          <a href="https://wa.me/18004567890" target="_blank" rel="noopener noreferrer" class="btn btn-emergency-whatsapp btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span>WhatsApp Us</span>
+          </a>
+
+          <a href="#contact" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); color: #fff;">
+            <span>Get Directions</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="emergency-info-panel">
+        <div class="emergency-info-row">
+          <div class="emergency-info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Emergency Hotline</h4>
+            <p>+1 (800) 911-AURA (2872)</p>
+          </div>
+        </div>
+
+        <div class="emergency-info-row">
+          <div class="emergency-info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <h4>Main Clinic Desk</h4>
+            <p>+1 (800) 456-7890</p>
+          </div>
+        </div>
+
+        <div class="emergency-info-row">
+          <div class="emergency-info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4>Operating Schedule</h4>
+            <p>Mon – Sat: 9 AM – 8 PM • Sun: 24/7 Triage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       13B. FREQUENTLY ASKED QUESTIONS (SEARCHABLE ACCORDION)
+       ========================================================================== -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="section-header center">
+        <span class="badge">PATIENT CONCIERGE GUIDE</span>
+        <h2>Frequently asked questions.</h2>
+        <p>Everything you need to know about preparing for your visit, insurance networks, same-day lab answers, and pavilion access.</p>
+      </div>
+
+      <!-- FAQ Search and Filter Toolbar -->
+      <div class="faq-toolbar">
+        <div class="faq-categories">
+          <button type="button" class="faq-cat-btn active" data-category="all">All Questions</button>
+          <button type="button" class="faq-cat-btn" data-category="appointments">Appointments & Visits</button>
+          <button type="button" class="faq-cat-btn" data-category="insurance">Insurance & Billing</button>
+          <button type="button" class="faq-cat-btn" data-category="diagnostics">Diagnostics & Labs</button>
+          <button type="button" class="faq-cat-btn" data-category="pavilion">Pavilion & Parking</button>
+        </div>
+
+        <div class="faq-search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="faqSearchInput" placeholder="Search questions (e.g., insurance, duration, parking)..." aria-label="Search FAQs">
+        </div>
+      </div>
+
+      <!-- FAQ Accordion List -->
+      <div class="faq-accordion-list" id="faqAccordionList">
+        <!-- Q1 -->
+        <div class="faq-item" data-category="appointments">
+          <button type="button" class="faq-question-btn" aria-expanded="false">
+            <span class="faq-q-text">What should I expect during my first 45-minute clinical appointment?</span>
+            <span class="faq-chevron-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer-pane">
+            <div class="faq-answer-inner">
+              <p>Unlike standard clinics with 10-minute rushed consultations, Aura Clinic provides dedicated 45 to 60-minute initial visits in our sound-insulated private suites. Your physician will examine your comprehensive medical history, lifestyle factors, hereditary markers, and conduct non-hurried diagnostic reviews. You will leave with a clear, personalized health blueprint and direct follow-up channel.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item" data-category="insurance">
+          <button type="button" class="faq-question-btn" aria-expanded="false">
+            <span class="faq-q-text">Which insurance networks and health plans does Aura Clinic accept?</span>
+            <span class="faq-chevron-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer-pane">
+            <div class="faq-answer-inner">
+              <p>We are in-network with premier private healthcare plans including Aetna, Blue Cross Blue Shield, Cigna Open Access, United Healthcare Choice Plus, and Medicare Part B. Our billing concierge coordinates pre-authorization on your behalf. We also provide transparent self-pay packages and detailed superbills for out-of-network reimbursement.</p>
+              <button type="button" class="btn btn-secondary btn-sm btn-trigger-insurance" style="margin-top: 0.75rem;">Check Your Insurance Coverage</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item" data-category="diagnostics">
+          <button type="button" class="faq-question-btn" aria-expanded="false">
+            <span class="faq-q-text">How quickly are diagnostic imaging and bloodwork results ready?</span>
+            <span class="faq-chevron-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer-pane">
+            <div class="faq-answer-inner">
+              <p>Because our automated hematology, biochemistry, and hormone pathology laboratory is located directly on campus, over 90% of routine diagnostic panels are processed within 90 minutes. Digital 3T MRI, ultrasounds, and echocardiograms are reviewed by board-certified radiologists on the same day and instantly synchronized to your private Patient Portal.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item" data-category="appointments">
+          <button type="button" class="faq-question-btn" aria-expanded="false">
+            <span class="faq-q-text">Can I message my physician directly after my consultation?</span>
+            <span class="faq-chevron-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer-pane">
+            <div class="faq-answer-inner">
+              <p>Yes. Every registered Aura patient receives access to our secure digital messaging portal. You can communicate directly with your physician’s care team for questions regarding treatment plans, medication adjustments, lab clarifications, or non-urgent symptoms 24 hours a day.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item" data-category="appointments">
+          <button type="button" class="faq-question-btn" aria-expanded="false">
+            <span class="faq-q-text">Are virtual or telemedicine consultations supported?</span>
+            <span class="faq-chevron-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer-pane">
+            <div class="faq-answer-inner">
+              <p>Yes. For routine follow-ups, medication reviews, lab interpretations, and dermatology screenings, we offer high-definition HIPAA-compliant telehealth consultations. You can select "Virtual Consultation" during appointment booking or request a tele-visit through your patient concierge.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="faq-item" data-category="pavilion">
+          <button type="button" class="faq-question-btn" aria-expanded="false">
+            <span class="faq-q-text">Is valet parking and wheelchair accessibility provided?</span>
+            <span class="faq-chevron-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer-pane">
+            <div class="faq-answer-inner">
+              <p>Yes. Complimentary white-glove valet parking is located at our main entrance canopy (742 Evergreen Medical Pavilion). The facility is 100% ADA compliant with barrier-free elevator access, wide corridors, and private companion waiting rooms.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="faq-item" data-category="insurance">
+          <button type="button" class="faq-question-btn" aria-expanded="false">
+            <span class="faq-q-text">What is your appointment cancellation and rescheduling policy?</span>
+            <span class="faq-chevron-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer-pane">
+            <div class="faq-answer-inner">
+              <p>We understand schedules change. You may reschedule or cancel your visit with zero fee up to 24 hours prior to your consultation time directly via your confirmation link or SMS concierge. For cancellations under 24 hours, our desk will happily assist you in transferring your slot to a telehealth session.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="faq-item" data-category="diagnostics">
+          <button type="button" class="faq-question-btn" aria-expanded="false">
+            <span class="faq-q-text">How do I order prescription refills from the clinical apothecary?</span>
+            <span class="faq-chevron-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer-pane">
+            <div class="faq-answer-inner">
+              <p>Our in-house clinical pharmacy coordinates direct refills through the Patient Portal. We offer complimentary same-day courier delivery within metropolitan areas for urgent therapies, and coordinated mail orders for routine maintenance regimens.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       14. APPOINTMENT CTA
+       ========================================================================== -->
+  <section class="section appointment-cta-section" id="booking-cta">
+    <div class="container">
+      <div class="cta-banner-box">
+        <div class="cta-content">
+          <span class="badge" style="background: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25); margin-bottom: 1rem;">
+            PRIORITY CONSULTATION
+          </span>
+          <h2>Your health deserves your attention.</h2>
+          <p>Take the first step toward better health today. Schedule a private consultation with our specialists in less than two minutes.</p>
+        </div>
+
+        <div class="cta-actions">
+          <button type="button" class="btn btn-mint btn-lg btn-trigger-booking" id="ctaBannerBookBtn">
+            <span>Book Your Appointment</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       15. CONTACT SECTION
+       ========================================================================== -->
+  <section class="section contact-section" id="contact">
+    <div class="container contact-grid">
+      <!-- Left Column: Details & Hours -->
+      <div class="contact-info-panel">
+        <div>
+          <span class="badge">GET IN TOUCH</span>
+          <h2>We are here for you.</h2>
+          <p style="margin-bottom: 2rem;">Visit our modern clinical pavilion in the medical arts district, or connect with our concierge team for private scheduling.</p>
+
+          <div class="contact-cards-list">
+            <!-- Address -->
+            <div class="contact-card-item">
+              <div class="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-card-title">Clinic Address</div>
+              <div class="contact-card-value">742 Evergreen Medical Pavilion, Suite 400, New York, NY 10021</div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-card-item">
+              <div class="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-card-title">Phone Inquiries</div>
+              <div class="contact-card-value">+1 (800) 456-7890<br>+1 (212) 555-0199</div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-card-item">
+              <div class="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div class="contact-card-title">Direct Email</div>
+              <div class="contact-card-value">care@auraclinic.com<br>appointments@auraclinic.com</div>
+            </div>
+
+            <!-- Parking / Transit -->
+            <div class="contact-card-item">
+              <div class="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </div>
+              <div class="contact-card-title">Valet & Parking</div>
+              <div class="contact-card-value">Complimentary Valet Parking available at main lobby entrance.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Working Hours Card -->
+        <div class="working-hours-card">
+          <div class="working-hours-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Clinical Consultation Hours</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Monday – Saturday</span>
+            <span class="hours-time">9:00 AM – 8:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time">Emergency & Urgent Care (24/7)</span>
+          </div>
+        </div>
+      </div>
+
+        <!-- Interactive Styled Map UI -->
+        <div class="contact-map-wrapper" aria-label="Aura Clinic Location Map" style="margin-top: 2rem;">
+          <div class="map-mock-bg"></div>
+          <div class="map-pin-container">
+            <div class="map-pin-pulsing">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="map-card-popup">
+              <div class="map-popup-title">AURA CLINIC MAIN PAVILION</div>
+              <div class="map-popup-sub">742 Evergreen Medical Pavilion</div>
+            </div>
+          </div>
+
+          <div class="map-bottom-controls">
+            <div>
+              <strong style="font-size: 0.95rem; color: var(--text-dark); display: block;">Medical Arts Pavilion, NY</strong>
+              <span style="font-size: 0.8rem; color: var(--text-light);">Subway: 68th St - Hunter College (Line 6)</span>
+            </div>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="btnMapDirections">
+              <span>Get Directions</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+
+      <!-- Right Column: Interactive Concierge Inquiry Form -->
+      <div class="contact-form-panel">
+        <div class="concierge-message-card">
+          <div class="concierge-card-header">
+            <span class="badge badge-mint" style="margin-bottom: 0.75rem;">DIRECT CONCIERGE DESK</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Send a Message to Clinic Concierge</h3>
+            <p style="font-size: 0.95rem; margin-bottom: 1.75rem;">Have questions regarding clinical care, billing, or physician availability? Our patient care liaison responds within two business hours.</p>
+          </div>
+
+          <form id="conciergeInquiryForm" class="concierge-form">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="form-group">
+                <label for="contactName" class="form-label">Full Name *</label>
+                <div class="form-input-wrapper">
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address *</label>
+                <div class="form-input-wrapper">
+                  <input type="email" id="contactEmail" class="form-input" placeholder="sarah@example.com" required>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="form-group">
+                <label for="contactPhone" class="form-label">Mobile Number</label>
+                <div class="form-input-wrapper">
+                  <input type="tel" id="contactPhone" class="form-input" placeholder="(555) 000-0000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contactDept" class="form-label">Department Inquiry</label>
+                <div class="form-input-wrapper">
+                  <select id="contactDept" class="form-select">
+                    <option value="General Clinical Inquiries">General Clinical Inquiries</option>
+                    <option value="Insurance & Billing">Insurance & Billing Pre-Authorization</option>
+                    <option value="Internal Medicine">Internal Medicine / Executive Health</option>
+                    <option value="Cardiology">Cardiology & Vascular Medicine</option>
+                    <option value="Dermatology">Dermatology & Skin Science</option>
+                    <option value="Pediatrics">Pediatrics & Family Care</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <label for="contactMessage" class="form-label">Your Message or Clinical Question *</label>
+              <textarea id="contactMessage" class="form-input" rows="4" placeholder="Briefly describe your question or consultation needs..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" id="btnSendConcierge" style="width: 100%;">
+              <span>Send Message to Concierge</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; color: var(--text-light); font-size: 0.82rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>100% HIPAA Patient Privacy Protected</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       16. FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Brand Col -->
+        <div class="footer-brand-col">
+          <div class="nav-brand">
+            <div class="brand-logo-icon" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M12 8v8"/>
+                <path d="M8 12h8"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name" style="color: #ffffff;">AURA CLINIC</span>
+              <span class="brand-tagline" style="color: var(--secondary-mint);">Care. Trust. Wellness.</span>
+            </div>
+          </div>
+
+          <p>A premier multispecialty clinical healthcare center focused on empathetic patient experiences, longevity science, and high-precision medical technology.</p>
+
+          <div class="footer-social-links" aria-label="Social links">
+            <a href="#" class="footer-social-icon" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer-social-icon" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="footer-social-icon" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Clinic Navigation -->
+        <div>
+          <h4 class="footer-col-title">Clinic</h4>
+          <ul class="footer-links-list">
+            <li><a href="#about" class="footer-link">About Our Clinic</a></li>
+            <li><a href="#doctors" class="footer-link">Specialist Doctors</a></li>
+            <li><a href="#treatments" class="footer-link">Services & Specialties</a></li>
+            <li><a href="#facilities" class="footer-link">Campus & Facilities</a></li>
+            <li><a href="#why-us" class="footer-link">The Aura Difference</a></li>
+            <li><a href="#blog" class="footer-link">Health Journal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Patient Care -->
+        <div>
+          <h4 class="footer-col-title">Patient Care</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home" class="footer-link btn-trigger-booking">Book Appointment</a></li>
+            <li><a href="#journey" class="footer-link">Patient Journey</a></li>
+            <li><a href="#testimonials" class="footer-link">Patient Testimonials</a></li>
+            <li><a href="#" class="footer-link btn-trigger-insurance">Insurance Networks</a></li>
+            <li><a href="#" class="footer-link btn-trigger-portal">Digital Patient Portal</a></li>
+            <li><a href="#faq" class="footer-link">Frequently Asked Questions</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Emergency -->
+        <div>
+          <h4 class="footer-col-title">Contact & Help</h4>
+          <ul class="footer-links-list">
+            <li><a href="tel:+18004567890" class="footer-link">General: (800) 456-7890</a></li>
+            <li><a href="tel:+18009112872" class="footer-link" style="color: #6ee7b7; font-weight: 600;">Emergency: (800) 911-AURA</a></li>
+            <li><a href="mailto:care@auraclinic.com" class="footer-link">care@auraclinic.com</a></li>
+            <li><span class="footer-link" style="opacity: 0.85;">742 Evergreen Medical Pav.<br>New York, NY 10021</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>
+          © 2026 Aura Clinic. All rights reserved. Professional healthcare services.
+        </div>
+        <div class="footer-legal-links">
+          <a href="#" class="footer-legal-link" data-legal="privacy">Privacy Policy</a>
+          <a href="#" class="footer-legal-link" data-legal="terms">Terms of Service</a>
+          <a href="#" class="footer-legal-link" data-legal="hipaa">HIPAA Compliance</a>
+          <a href="#" class="footer-legal-link" data-legal="rights">Patient Rights</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Emergency & Quick Booking Speed-Dial Widget -->
+  <div class="floating-quick-widget" id="floatingQuickWidget">
+    <a href="tel:+18009112872" class="quick-widget-btn quick-emergency" aria-label="Call Emergency Triage" title="Call 24/7 Emergency Triage">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="quick-widget-tooltip">24/7 Triage: (800) 911-AURA</span>
+    </a>
+    <button type="button" class="quick-widget-btn quick-book btn-trigger-booking" aria-label="Book visit" title="Quick Appointment Booking">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span class="quick-widget-tooltip">Schedule Consultation</span>
+    </button>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button type="button" class="back-to-top" aria-label="Back to top of page">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+
+  <!-- 1. APPOINTMENT BOOKING MODAL (MULTI-STEP) -->
+  <div class="modal-overlay" id="appointmentBookingModal" role="dialog" aria-modal="true" aria-labelledby="modalBookingHeader">
+    <div class="modal-container">
+      <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <span class="badge badge-mint" style="margin-bottom: 0.5rem;">APPOINTMENT SCHEDULER</span>
+        <h2 id="modalBookingHeader" style="font-size: 1.6rem;">Schedule Your Visit</h2>
+        <p class="text-sm">Experience unhurried medical care with our dedicated physicians.</p>
+      </div>
+
+      <div class="modal-body">
+        <!-- Steps indicator -->
+        <div class="booking-steps-indicator">
+          <span class="booking-step-pill active" id="pillStep1">1. Specialty & Doctor</span>
+          <span class="booking-step-pill" id="pillStep2">2. Date & Time</span>
+          <span class="booking-step-pill" id="pillStep3">3. Patient Info</span>
+        </div>
+
+        <!-- Step 1: Department & Doctor -->
+        <div id="bookingStep1">
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label class="form-label" for="modalSelectDept">Select Clinical Specialty</label>
+            <div class="form-input-wrapper">
+              <select id="modalSelectDept" class="form-select">
+                <option value="General & Preventative Medicine">General & Preventative Medicine</option>
+                <option value="Cardiology & Vascular Health">Cardiology & Vascular Health</option>
+                <option value="Dermatology & Skin Science">Dermatology & Skin Science</option>
+                <option value="Pediatrics & Adolescent Care">Pediatrics & Adolescent Care</option>
+                <option value="Orthopedics & Joint Mobility">Orthopedics & Joint Mobility</option>
+                <option value="Preventative & Cosmetic Dental">Preventative & Cosmetic Dental</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 2rem;">
+            <label class="form-label" for="modalSelectDoctor">Select Lead Physician</label>
+            <div class="form-input-wrapper">
+              <select id="modalSelectDoctor" class="form-select">
+                <option value="Dr. Eleanor Vance, MD">Dr. Eleanor Vance, MD (Chief Internist)</option>
+                <option value="Dr. Michael Chen, MD, FACC">Dr. Michael Chen, MD, FACC (Senior Cardiologist)</option>
+                <option value="Dr. Elena Vance, MD">Dr. Elena Vance, MD (Dermatologist)</option>
+                <option value="Dr. Julian Rivera, MD, FAAP">Dr. Julian Rivera, MD, FAAP (Pediatrics & Sports)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end;">
+            <button type="button" class="btn btn-primary" id="btnToStep2">
+              <span>Continue to Schedule</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Date & Slot -->
+        <div id="bookingStep2" style="display: none;">
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label" for="modalBookingDate">Select Appointment Date</label>
+            <div class="form-input-wrapper">
+              <input type="date" id="modalBookingDate" class="form-input" value="2026-10-15">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 2rem;">
+            <label class="form-label">Available Time Slots</label>
+            <div class="slot-grid">
+              <button type="button" class="slot-btn" data-slot="09:00 AM">09:00 AM</button>
+              <button type="button" class="slot-btn selected" data-slot="10:00 AM">10:00 AM</button>
+              <button type="button" class="slot-btn" data-slot="11:30 AM">11:30 AM</button>
+              <button type="button" class="slot-btn" data-slot="02:00 PM">02:00 PM</button>
+              <button type="button" class="slot-btn" data-slot="03:30 PM">03:30 PM</button>
+              <button type="button" class="slot-btn" data-slot="05:15 PM">05:15 PM</button>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between;">
+            <button type="button" class="btn btn-secondary" id="btnBackTo1">Back</button>
+            <button type="button" class="btn btn-primary" id="btnToStep3">
+              <span>Patient Details</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Patient Info -->
+        <div id="bookingStep3" style="display: none;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="patientName">Full Name *</label>
+              <input type="text" id="patientName" class="form-input" placeholder="e.g. Jane Foster" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="patientPhone">Mobile Number *</label>
+              <input type="tel" id="patientPhone" class="form-input" placeholder="(555) 000-0000" required>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="patientEmail">Email Address</label>
+            <input type="email" id="patientEmail" class="form-input" placeholder="jane@example.com">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 2rem;">
+            <label class="form-label" for="patientNotes">Reason for Visit / Symptoms</label>
+            <textarea id="patientNotes" class="form-input" rows="3" placeholder="Briefly describe your consultation goals..."></textarea>
+          </div>
+
+          <div style="display: flex; justify-content: space-between;">
+            <button type="button" class="btn btn-secondary" id="btnBackTo2">Back</button>
+            <button type="button" class="btn btn-primary" id="btnConfirmBooking">
+              <span>Confirm Reservation</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 4: Success Pass -->
+        <div id="bookingStep4" style="display: none;">
+          <div class="booking-success-card">
+            <div class="success-check-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--primary);">Appointment Reserved!</h3>
+            <p style="margin-bottom: 2rem;">Your consultation has been confirmed in our clinic scheduling system. A digital confirmation pass has been created.</p>
+
+            <div style="background: var(--bg-warm); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 2rem; text-align: left;">
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-light); padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                <span class="text-sm" style="color: var(--text-light);">Pass Code:</span>
+                <strong id="confirmPassCode" style="color: var(--primary);">#AUR-8429</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-light); padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                <span class="text-sm" style="color: var(--text-light);">Physician:</span>
+                <strong id="confirmPassDoctor">Dr. Eleanor Vance, MD</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-light); padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                <span class="text-sm" style="color: var(--text-light);">Scheduled For:</span>
+                <strong id="confirmPassDateTime">2026-10-15 at 10:00 AM</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span class="text-sm" style="color: var(--text-light);">Patient:</span>
+                <strong id="confirmPassPatient">Jane Foster</strong>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary" id="btnAddToCalendar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span>Add to Calendar</span>
+              </button>
+              <button type="button" class="btn btn-primary" id="btnDownloadPass">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download Pass</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. DOCTOR PROFILE MODAL -->
+  <div class="modal-overlay" id="doctorDetailModal" role="dialog" aria-modal="true" aria-labelledby="docModalName">
+    <div class="modal-container">
+      <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-body" style="padding-top: 2.5rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap;">
+          <img id="docModalPhoto" src="assets/images/hero_doctor.jpg" alt="Doctor Photo" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--secondary-mint);">
+          <div>
+            <span class="badge badge-mint" id="docModalExp">14+ Years Exp</span>
+            <h3 id="docModalName" style="font-size: 1.6rem; margin-top: 0.35rem;">Dr. Eleanor Vance, MD</h3>
+            <div id="docModalSpecialty" style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Chief Physician & Internal Medicine</div>
+            <div id="docModalRating" style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.2rem;">★ 4.98 / 5.0 (340+ verified reviews)</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Clinical Biography</h4>
+          <p id="docModalBio" style="font-size: 0.95rem; line-height: 1.6;"></p>
+        </div>
+
+        <div style="background: var(--bg-warm); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.75rem; border: 1px solid var(--border-light);">
+          <div style="margin-bottom: 0.75rem;">
+            <strong style="font-size: 0.85rem; color: var(--text-dark); display: block;">Education & Training:</strong>
+            <span id="docModalEdu" class="text-sm" style="color: var(--text-muted);"></span>
+          </div>
+          <div style="margin-bottom: 0.75rem;">
+            <strong style="font-size: 0.85rem; color: var(--text-dark); display: block;">Board Certifications:</strong>
+            <span id="docModalCert" class="text-sm" style="color: var(--text-muted);"></span>
+          </div>
+          <div>
+            <strong style="font-size: 0.85rem; color: var(--text-dark); display: block;">Office Hours:</strong>
+            <span id="docModalHours" class="text-sm" style="color: var(--primary); font-weight: 600;"></span>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary modal-close-trigger">Close</button>
+          <button type="button" class="btn btn-primary" id="docModalBookBtn">
+            <span>Book With This Specialist</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SERVICE DETAILS MODAL -->
+  <div class="modal-overlay" id="serviceDetailModal" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+    <div class="modal-container">
+      <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <span class="badge" id="serviceModalTag">Primary Care</span>
+        <h2 id="serviceModalTitle" style="font-size: 1.6rem; margin-top: 0.35rem;">General Medicine</h2>
+        <div id="serviceModalDoctor" style="color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-top: 0.25rem;"></div>
+      </div>
+
+      <div class="modal-body">
+        <p id="serviceModalDesc" style="margin-bottom: 1.5rem;"></p>
+        
+        <h4 style="font-size: 1rem; margin-bottom: 0.75rem;">Department Highlights & Protocols</h4>
+        <ul id="serviceModalFeatures" class="about-features-list" style="margin-bottom: 2rem;"></ul>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary modal-close-trigger">Close</button>
+          <button type="button" class="btn btn-primary" id="serviceModalBookBtn">
+            <span>Book Department Visit</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. ARTICLE READER MODAL -->
+  <div class="modal-overlay" id="articleDetailModal" role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
+    <div class="modal-container" style="max-width: 760px;">
+      <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <span class="badge" id="articleModalCategory">Preventative Health</span>
+          <span id="articleModalDate" class="text-sm" style="color: var(--text-light);">Oct 1, 2026 • 4 min read</span>
+        </div>
+        <h2 id="articleModalTitle" style="font-size: 1.7rem; line-height: 1.25;">5 Subtle Health Warning Signs You Should Never Ignore</h2>
+      </div>
+
+      <div class="modal-body">
+        <div id="articleModalBody" style="line-height: 1.75; font-size: 1.02rem; color: var(--text-muted);"></div>
+
+        <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <span class="text-sm" style="color: var(--text-light);">Reviewed by Aura Medical Advisory Board</span>
+          <button type="button" class="btn btn-primary btn-sm modal-close-trigger">Close Article</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. INSURANCE COVERAGE CHECKER MODAL -->
+  <div class="modal-overlay" id="insuranceModal" role="dialog" aria-modal="true" aria-labelledby="insuranceModalTitle">
+    <div class="modal-container" style="max-width: 740px;">
+      <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <span class="badge badge-mint" style="margin-bottom: 0.5rem;">TRANSPARENT REIMBURSEMENT</span>
+        <h2 id="insuranceModalTitle" style="font-size: 1.6rem;">Insurance & Network Coverage</h2>
+        <p class="text-sm">Aura Clinic partners with leading commercial insurance networks and provides seamless out-of-network concierge billing.</p>
+      </div>
+
+      <div class="modal-body">
+        <!-- Insurance Quick Search -->
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label for="insuranceSearchInput" class="form-label">Search Your Health Plan Provider</label>
+          <div class="form-input-wrapper">
+            <span class="form-icon-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <input type="text" id="insuranceSearchInput" class="form-input" placeholder="Type provider name (e.g. Aetna, Blue Cross, Cigna, Medicare)...">
+          </div>
+        </div>
+
+        <!-- Insurance Providers Grid -->
+        <div class="insurance-providers-list" id="insuranceList">
+          <div class="insurance-item" data-provider="aetna ppo pos">
+            <div class="insurance-item-left">
+              <strong>Aetna Healthcare (PPO / POS / Choice)</strong>
+              <span>Tier 1 In-Network Provider • Routine copay applies</span>
+            </div>
+            <span class="badge badge-mint">In-Network</span>
+          </div>
+
+          <div class="insurance-item" data-provider="blue cross blue shield anthem bcbs ppo">
+            <div class="insurance-item-left">
+              <strong>Blue Cross Blue Shield (PPO / Empire / Anthem)</strong>
+              <span>Direct electronic claims submission • Preventative 100%</span>
+            </div>
+            <span class="badge badge-mint">In-Network</span>
+          </div>
+
+          <div class="insurance-item" data-provider="cigna open access plus ppo">
+            <div class="insurance-item-left">
+              <strong>Cigna Healthcare (Open Access Plus / PPO)</strong>
+              <span>In-network diagnostic labs and cardiology coverage</span>
+            </div>
+            <span class="badge badge-mint">In-Network</span>
+          </div>
+
+          <div class="insurance-item" data-provider="united healthcare uhc choice plus optum">
+            <div class="insurance-item-left">
+              <strong>UnitedHealthcare (Choice Plus / Navigate)</strong>
+              <span>Specialist referrals expedited via electronic portal</span>
+            </div>
+            <span class="badge badge-mint">In-Network</span>
+          </div>
+
+          <div class="insurance-item" data-provider="medicare part b advantage">
+            <div class="insurance-item-left">
+              <strong>Medicare Part B & Select Advantage Plans</strong>
+              <span>Covered medical consultations and preventative diagnostics</span>
+            </div>
+            <span class="badge badge-mint">In-Network</span>
+          </div>
+
+          <div class="insurance-item" data-provider="delta dental metlife guardian dental">
+            <div class="insurance-item-left">
+              <strong>Delta Dental Premier & MetLife Dental</strong>
+              <span>Applicable for Preventative & Restorative Dental suite</span>
+            </div>
+            <span class="badge badge-mint">In-Network</span>
+          </div>
+
+          <div class="insurance-item" data-provider="private pay superbill out of network concierge">
+            <div class="insurance-item-left">
+              <strong>Self-Pay & Out-of-Network Concierge</strong>
+              <span>Instant coded CMS-1500 superbills generated for fast reimbursement</span>
+            </div>
+            <span class="badge">Superbill Supported</span>
+          </div>
+        </div>
+
+        <!-- Fast Verification Simulator -->
+        <div class="insurance-verify-box" style="margin-top: 1.75rem; background: var(--bg-warm); border-radius: var(--radius-md); padding: 1.25rem; border: 1px solid var(--border-light);">
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem;">Need Instant Pre-Authorization Verification?</h4>
+          <p class="text-sm" style="margin-bottom: 1rem;">Enter your policy information and our insurance desk will verify your eligibility.</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <input type="text" id="insMemberId" class="form-input" placeholder="Member ID (e.g. W12345678)">
+            <input type="text" id="insGroupNo" class="form-input" placeholder="Group Number (optional)">
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" id="btnVerifyInsurance" style="width: 100%;">
+            <span>Verify Eligibility Now</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. DIGITAL PATIENT PORTAL DEMO MODAL -->
+  <div class="modal-overlay" id="portalModal" role="dialog" aria-modal="true" aria-labelledby="portalModalTitle">
+    <div class="modal-container" style="max-width: 780px;">
+      <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <span class="badge badge-mint">SECURE PATIENT PORTAL DEMO</span>
+          <span class="text-sm" style="color: var(--text-light); font-weight: 600;">Patient ID: #AUR-9821</span>
+        </div>
+        <h2 id="portalModalTitle" style="font-size: 1.6rem;">Welcome back, Jane Foster</h2>
+        <p class="text-sm">Manage upcoming visits, review diagnostic biomarkers, and message your physicians.</p>
+      </div>
+
+      <div class="modal-body">
+        <!-- Portal Nav Tabs -->
+        <div class="portal-tabs-nav">
+          <button type="button" class="portal-tab-btn active" data-portal-tab="visits">Upcoming Visit</button>
+          <button type="button" class="portal-tab-btn" data-portal-tab="labs">Lab Biomarkers (4)</button>
+          <button type="button" class="portal-tab-btn" data-portal-tab="messages">Care Team Chat (1)</button>
+        </div>
+
+        <!-- Tab 1: Upcoming Visit -->
+        <div class="portal-tab-content" id="portalTabVisits">
+          <div class="portal-visit-card">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+              <div>
+                <span class="badge badge-mint">Confirmed Consultation</span>
+                <h3 style="font-size: 1.3rem; margin-top: 0.35rem;">Executive Longevity Consultation</h3>
+                <p class="text-sm">Lead Physician: Dr. Eleanor Vance, MD (Internal Medicine)</p>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem;">Oct 15, 2026</div>
+                <div class="text-sm" style="color: var(--text-muted);">10:00 AM – 11:00 AM</div>
+              </div>
+            </div>
+
+            <div style="background: var(--bg-surface); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1rem; border: 1px solid var(--border-light); font-size: 0.9rem;">
+              <div><strong>Location:</strong> Suite 400, Private Consultation Room 3</div>
+              <div><strong>Pre-visit notes:</strong> 12-hour fasting required for comprehensive metabolic panel. Complimentary herbal tea in patient lounge upon arrival.</div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary btn-sm" id="btnPortalAddToCal">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span>Add to Calendar</span>
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="showToast('Rescheduling request sent to your patient liaison.');">Reschedule Visit</button>
+              <button type="button" class="btn btn-primary btn-sm btn-trigger-booking">Book New Specialist</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Lab Results -->
+        <div class="portal-tab-content" id="portalTabLabs" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <strong style="font-size: 0.95rem;">Automated Pathology & Bloodwork (Oct 2, 2026)</strong>
+            <button type="button" class="btn btn-text btn-sm" onclick="showToast('Downloading complete laboratory panel PDF...');">Download Full PDF ↓</button>
+          </div>
+
+          <div class="portal-labs-table">
+            <div class="lab-row">
+              <div class="lab-name">
+                <strong>Apolipoprotein B (ApoB)</strong>
+                <span>Cardiovascular Risk Marker</span>
+              </div>
+              <div class="lab-val"><strong>72 mg/dL</strong></div>
+              <div class="lab-ref text-sm">Ref: &lt; 90 mg/dL</div>
+              <span class="badge badge-mint">Optimal</span>
+            </div>
+
+            <div class="lab-row">
+              <div class="lab-name">
+                <strong>Fasting Glucose</strong>
+                <span>Metabolic Regulation</span>
+              </div>
+              <div class="lab-val"><strong>88 mg/dL</strong></div>
+              <div class="lab-ref text-sm">Ref: 70 - 99 mg/dL</div>
+              <span class="badge badge-mint">Normal</span>
+            </div>
+
+            <div class="lab-row">
+              <div class="lab-name">
+                <strong>Vitamin D3 (25-Hydroxy)</strong>
+                <span>Immune & Bone Density</span>
+              </div>
+              <div class="lab-val"><strong>56 ng/mL</strong></div>
+              <div class="lab-ref text-sm">Ref: 40 - 80 ng/mL</div>
+              <span class="badge badge-mint">Optimal</span>
+            </div>
+
+            <div class="lab-row">
+              <div class="lab-name">
+                <strong>High-Sensitivity CRP (hs-CRP)</strong>
+                <span>Systemic Inflammation Marker</span>
+              </div>
+              <div class="lab-val"><strong>0.6 mg/L</strong></div>
+              <div class="lab-ref text-sm">Ref: &lt; 1.0 mg/L</div>
+              <span class="badge badge-mint">Low Risk</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Care Team Messages -->
+        <div class="portal-tab-content" id="portalTabMessages" style="display: none;">
+          <div class="portal-chat-box">
+            <div class="chat-bubble doc-bubble">
+              <div class="chat-sender">Dr. Eleanor Vance, MD • Oct 3, 11:20 AM</div>
+              <p>Hello Jane, I reviewed your ApoB and inflammatory markers from Thursday. Your vascular lipid numbers are phenomenal, well below standard preventative targets. Keep up the post-meal walking routine. We will review your micronutrient profile during our in-person visit next week.</p>
+            </div>
+
+            <div class="chat-bubble patient-bubble">
+              <div class="chat-sender">Jane Foster (You) • Oct 3, 2:15 PM</div>
+              <p>Thank you so much, Dr. Vance! That is wonderful peace of mind. See you next Wednesday.</p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <input type="text" id="portalMsgInput" class="form-input" placeholder="Type a message to Dr. Vance's clinical team...">
+            <button type="button" class="btn btn-primary btn-sm" id="btnSendPortalMsg">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. LEGAL POLICY MODAL -->
+  <div class="modal-overlay" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+    <div class="modal-container" style="max-width: 720px;">
+      <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <span class="badge" id="legalModalBadge">POLICY STATEMENT</span>
+        <h2 id="legalModalTitle" style="font-size: 1.6rem; margin-top: 0.35rem;">Clinical Privacy Policy</h2>
+      </div>
+
+      <div class="modal-body">
+        <div id="legalModalBody" style="line-height: 1.7; font-size: 0.96rem; color: var(--text-muted);"></div>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+          <button type="button" class="btn btn-primary btn-sm modal-close-trigger">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

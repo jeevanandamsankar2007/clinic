@@ -1,0 +1,19 @@
+{
+  "name": "aura-health-clinic",
+  "version": "1.0.0",
+  "description": "Aura Health & Longevity Clinic - Luxury Healthcare Web Application",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y serve .",
+    "dev": "npx -y serve ."
+  },
+  "keywords": [
+    "healthcare",
+    "clinic",
+    "wellness",
+    "longevity",
+    "responsive-web-app"
+  ],
+  "author": "Jeevanandam Sankar",
+  "license": "MIT"
+}
