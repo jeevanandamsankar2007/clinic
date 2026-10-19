@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initBackToTop();
   initToast();
+  initStoryMode();
+  initMobileBottomDock();
+  initPatientStoryModal();
+  initMobileTouchPolish();
 });
 
 /* ==========================================================================
@@ -1854,4 +1858,560 @@ function downloadAppointmentPass() {
   `);
   printWindow.document.close();
 }
+
+/* ==========================================================================
+   17. STORYTELLING MODE ENGINE & AUDIO SYNTHESIS
+   ========================================================================== */
+
+function initStoryMode() {
+  const storyChapters = [
+    {
+      id: 'home',
+      title: 'The Sanctuary of Human Healing',
+      quote: '"Where medicine meets empathy. Step inside a sanctuary designed to listen before it prescribes."'
+    },
+    {
+      id: 'about',
+      title: 'Evidence & Human Trust',
+      quote: '"Founded on clinical transparency, board-certified mastery, and patient-first medicine."'
+    },
+    {
+      id: 'treatments',
+      title: 'Intelligent Healing Pathways',
+      quote: '"Precision medicine and intelligent navigation tailored to your unique biological blueprint."'
+    },
+    {
+      id: 'doctors',
+      title: 'The Healers & Pioneers',
+      quote: '"Meet physicians who spend the time to understand your whole life story, not just your symptoms."'
+    },
+    {
+      id: 'facilities',
+      title: 'Architecture of Tranquility',
+      quote: '"Architectural calm meets cutting-edge diagnostic intelligence and zero-stress comfort."'
+    },
+    {
+      id: 'journey',
+      title: 'Your Longevity Pathway',
+      quote: '"From initial biomarker mapping to lifelong thriving vitality and cellular renewal."'
+    },
+    {
+      id: 'contact',
+      title: 'Begin Your Healing Today',
+      quote: '"Your journey to vitality begins with one conversation. Our concierge team is standing by."'
+    }
+  ];
+
+  let currentChapter = 0;
+  let isStoryActive = false;
+  let isAutoPlaying = false;
+  let autoPlayInterval = null;
+  let chimeEnabled = true;
+  let voiceEnabled = false;
+  let audioCtx = null;
+
+  // DOM Elements
+  const hud = document.getElementById('storyHud');
+  const toggleBtn = document.getElementById('storyModeToggle');
+  const heroBtn = document.getElementById('heroStoryBtn');
+  const drawerBtn = document.getElementById('mobileDrawerStoryBtn');
+  const dockBtn = document.getElementById('mobileDockStoryBtn');
+  const prevBtn = document.getElementById('storyPrevBtn');
+  const nextBtn = document.getElementById('storyNextBtn');
+  const exitBtn = document.getElementById('storyExitBtn');
+  const autoPlayBtn = document.getElementById('storyAutoPlayBtn');
+  const chimeBtn = document.getElementById('storyChimeBtn');
+  const voiceBtn = document.getElementById('storyVoiceBtn');
+  const openStoryModalBtn = document.getElementById('openPatientStoryBtn');
+
+  const chapterLabel = document.getElementById('storyChapterLabel');
+  const hudTitle = document.getElementById('storyHudTitle');
+  const hudQuote = document.getElementById('storyHudQuote');
+  const progressFill = document.getElementById('storyHudProgressFill');
+  const dotsContainer = document.getElementById('storyHudDots');
+
+  // Build chapter indicator dots
+  if (dotsContainer) {
+    dotsContainer.innerHTML = '';
+    storyChapters.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = `story-hud-dot ${idx === 0 ? 'active' : ''}`;
+      dot.textContent = (idx + 1).toString();
+      dot.setAttribute('aria-label', `Go to scene ${idx + 1}`);
+      dot.addEventListener('click', () => {
+        goToChapter(idx, true);
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  // Web Audio API Crystal Chime Generator (Pure synthesized tones, no assets needed)
+  function playHarmonicChime(freq = 528) {
+    if (!chimeEnabled) return;
+    try {
+      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtxClass) return;
+      if (!audioCtx) audioCtx = new AudioCtxClass();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const now = audioCtx.currentTime;
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(freq, now);
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(freq * 1.5, now);
+
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(0.12, now + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + 1.2);
+      osc2.stop(now + 1.2);
+    } catch (e) {
+      // Audio autoplay restrictions or unsupported
+    }
+  }
+
+  // Speech Narration Reader
+  function narrateScene(text) {
+    if (!voiceEnabled || !('speechSynthesis' in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/["']/g, '');
+      const utterance = new SpeechSynthesisUtterance(clean);
+      utterance.rate = 0.95;
+      utterance.pitch = 1.05;
+      window.speechSynthesis.speak(utterance);
+    } catch (e) {
+      // Speech synthesis error
+    }
+  }
+
+  // Render active chapter in HUD & highlight section
+  function renderScene(index, smoothScroll = true) {
+    if (index < 0) index = 0;
+    if (index >= storyChapters.length) index = storyChapters.length - 1;
+    currentChapter = index;
+
+    const data = storyChapters[index];
+
+    if (chapterLabel) chapterLabel.textContent = `SCENE 0${index + 1} / 0${storyChapters.length}`;
+    if (hudTitle) hudTitle.textContent = data.title;
+    if (hudQuote) hudQuote.textContent = data.quote;
+
+    if (progressFill) {
+      const pct = Math.round(((index + 1) / storyChapters.length) * 100);
+      progressFill.style.width = `${pct}%`;
+    }
+
+    // Update Dots
+    const dots = dotsContainer?.querySelectorAll('.story-hud-dot');
+    dots?.forEach((d, i) => {
+      d.classList.remove('active', 'completed');
+      if (i === index) d.classList.add('active');
+      else if (i < index) d.classList.add('completed');
+    });
+
+    // Highlight Section
+    document.querySelectorAll('section[data-story-chapter]').forEach(sec => {
+      sec.classList.remove('story-active-scene');
+    });
+
+    const targetSec = document.getElementById(data.id);
+    if (targetSec) {
+      targetSec.classList.add('story-active-scene');
+      if (smoothScroll) {
+        const navOffset = window.innerWidth <= 768 ? 70 : 95;
+        const targetY = targetSec.getBoundingClientRect().top + window.pageYOffset - navOffset;
+        window.scrollTo({
+          top: Math.max(0, targetY),
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Audio cue
+    const noteFreqs = [528, 594, 660, 704, 792, 880, 990];
+    playHarmonicChime(noteFreqs[index % noteFreqs.length]);
+    narrateScene(data.quote);
+  }
+
+  function goToChapter(index, smoothScroll = true) {
+    if (!isStoryActive) toggleStoryMode(true);
+    renderScene(index, smoothScroll);
+  }
+
+  function nextChapter() {
+    if (currentChapter < storyChapters.length - 1) {
+      renderScene(currentChapter + 1, true);
+    } else {
+      if (isAutoPlaying) stopAutoPlay();
+      showToast('You completed the Aura Clinic Story Journey! Welcome to wellness.', 'success');
+      renderScene(0, true);
+    }
+  }
+
+  function prevChapter() {
+    if (currentChapter > 0) {
+      renderScene(currentChapter - 1, true);
+    }
+  }
+
+  function startAutoPlay() {
+    isAutoPlaying = true;
+    autoPlayBtn?.classList.add('active');
+    const autoText = autoPlayBtn?.querySelector('.story-autoplay-text');
+    if (autoText) autoText.textContent = 'Pause';
+    showToast('Story Auto-Play activated. Enjoy the guided cruise.', 'info');
+
+    autoPlayInterval = setInterval(() => {
+      nextChapter();
+    }, 6500);
+  }
+
+  function stopAutoPlay() {
+    isAutoPlaying = false;
+    autoPlayBtn?.classList.remove('active');
+    const autoText = autoPlayBtn?.querySelector('.story-autoplay-text');
+    if (autoText) autoText.textContent = 'Auto';
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = null;
+    }
+  }
+
+  function toggleStoryMode(forceOpen = null) {
+    const shouldOpen = forceOpen !== null ? forceOpen : !isStoryActive;
+    isStoryActive = shouldOpen;
+
+    if (shouldOpen) {
+      document.body.classList.add('story-mode-active');
+      toggleBtn?.classList.add('active');
+      dockBtn?.classList.add('active');
+      if (hud) hud.style.display = 'block';
+
+      // Find closest chapter to current scroll position
+      let closestIdx = 0;
+      let minDistance = Infinity;
+      storyChapters.forEach((ch, idx) => {
+        const el = document.getElementById(ch.id);
+        if (el) {
+          const dist = Math.abs(el.getBoundingClientRect().top - 120);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIdx = idx;
+          }
+        }
+      });
+
+      renderScene(closestIdx, false);
+      showToast('Aura Story Mode Activated. Explore our human-centered clinical journey.', 'success');
+    } else {
+      document.body.classList.remove('story-mode-active');
+      toggleBtn?.classList.remove('active');
+      dockBtn?.classList.remove('active');
+      if (hud) hud.style.display = 'none';
+      stopAutoPlay();
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      document.querySelectorAll('.story-active-scene').forEach(sec => sec.classList.remove('story-active-scene'));
+    }
+  }
+
+  // Event Listeners
+  toggleBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleStoryMode();
+  });
+
+  heroBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleStoryMode(true);
+  });
+
+  drawerBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const drawer = document.querySelector('.mobile-nav-drawer');
+    const backdrop = document.querySelector('.mobile-nav-backdrop');
+    drawer?.classList.remove('open');
+    backdrop?.classList.remove('open');
+    document.body.style.overflow = '';
+    toggleStoryMode(true);
+  });
+
+  dockBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleStoryMode();
+  });
+
+  prevBtn?.addEventListener('click', () => prevChapter());
+  nextBtn?.addEventListener('click', () => nextChapter());
+  exitBtn?.addEventListener('click', () => toggleStoryMode(false));
+
+  autoPlayBtn?.addEventListener('click', () => {
+    if (isAutoPlaying) stopAutoPlay();
+    else startAutoPlay();
+  });
+
+  chimeBtn?.addEventListener('click', () => {
+    chimeEnabled = !chimeEnabled;
+    chimeBtn.classList.toggle('active', chimeEnabled);
+    if (chimeEnabled) {
+      playHarmonicChime(528);
+      showToast('Crystal Harmonic Chimes enabled', 'info');
+    } else {
+      showToast('Sound effects muted', 'info');
+    }
+  });
+
+  voiceBtn?.addEventListener('click', () => {
+    voiceEnabled = !voiceEnabled;
+    voiceBtn.classList.toggle('active', voiceEnabled);
+    if (voiceEnabled) {
+      narrateScene(storyChapters[currentChapter].quote);
+      showToast('Voice Read-Aloud enabled', 'info');
+    } else {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      showToast('Voice Read-Aloud muted', 'info');
+    }
+  });
+
+  openStoryModalBtn?.addEventListener('click', () => {
+    const modal = document.getElementById('patientStoryModal');
+    if (modal) modal.classList.add('open');
+  });
+
+  // Keyboard navigation for Story Mode
+  document.addEventListener('keydown', (e) => {
+    if (!isStoryActive) {
+      if (e.key === 's' || e.key === 'S') {
+        const activeEl = document.activeElement;
+        const isInput = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable);
+        if (!isInput) {
+          toggleStoryMode(true);
+        }
+      }
+      return;
+    }
+
+    if (e.key === 'Escape') {
+      toggleStoryMode(false);
+    } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      nextChapter();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      prevChapter();
+    }
+  });
+
+  // Track story sections during manual scroll
+  let scrollTimeout = null;
+  window.addEventListener('scroll', () => {
+    if (!isStoryActive || isAutoPlaying) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const scrollY = window.pageYOffset + 180;
+      storyChapters.forEach((ch, idx) => {
+        const sec = document.getElementById(ch.id);
+        if (sec) {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          if (scrollY >= top && scrollY < top + height && currentChapter !== idx) {
+            renderScene(idx, false);
+          }
+        }
+      });
+    }, 120);
+  }, { passive: true });
+}
+
+/* ==========================================================================
+   18. MOBILE GLASSMORPHIC BOTTOM NAVIGATION DOCK
+   ========================================================================== */
+
+function initMobileBottomDock() {
+  const dock = document.getElementById('mobileBottomDock');
+  if (!dock) return;
+
+  const dockLinks = dock.querySelectorAll('.bottom-dock-item[data-target]');
+
+  function updateActiveDockItem() {
+    const scrollPos = window.pageYOffset + 180;
+    dockLinks.forEach(link => {
+      const targetId = link.getAttribute('data-target');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        const top = targetEl.offsetTop;
+        const height = targetEl.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          dockLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveDockItem, { passive: true });
+
+  dockLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('data-target');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        dockLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        const offset = 75;
+        const y = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   19. INTERACTIVE PATIENT STORY MODAL (SARAH'S TRANSFORMATION)
+   ========================================================================== */
+
+function initPatientStoryModal() {
+  const modal = document.getElementById('patientStoryModal');
+  if (!modal) return;
+
+  const tabs = modal.querySelectorAll('.story-scene-tab');
+  const contentBox = document.getElementById('storySceneContent');
+
+  const scenes = [
+    {
+      badge: 'SCENE 01 • THE INITIAL CRISIS',
+      time: 'Month 0',
+      title: '"I had seen four specialists who told me my standard blood tests were normal."',
+      desc: 'At age 42, Sarah experienced daily 3 PM exhaustion, unrefreshing sleep, midday brain fog, and chronic muscular tension. Traditional 8-minute appointments left her without actionable root-cause insights.',
+      doc: 'Dr. Sarah Lin, MD • Integrative Physician',
+      avatar: 'assets/images/doctor_sarah.jpg',
+      quote: '"Standard reference ranges reflect population averages, not optimal cellular vitality. When Sarah arrived at Aura, our first action was spending 90 unhurried minutes mapping her biological rhythm."'
+    },
+    {
+      badge: 'SCENE 02 • MULTI-OMIC CELLULAR DIAGNOSTICS',
+      time: 'Month 1',
+      title: 'Uncovering Hidden Vascular & Endocrine Stressors',
+      desc: 'Advanced bio-marker mapping revealed sub-clinical chronic vascular inflammation (hs-CRP 3.8 mg/L), blunted diurnal cortisol curve, and elevated ApoB particles that standard cholesterol tests missed entirely.',
+      doc: 'Dr. Marcus Vance, MD • Cardiologist & Prevention Director',
+      avatar: 'assets/images/doctor_marcus.jpg',
+      quote: '"Standard medicine looks for existing disease. At Aura, we measure cellular stress years before symptoms progress into irreversible pathology."'
+    },
+    {
+      badge: 'SCENE 03 • THE PRECISION PROTOCOL',
+      time: 'Months 2–4',
+      title: 'Cellular Mitochondrial Realignment & Circadian Retraining',
+      desc: 'A personalized 12-week regimen was co-designed: targeted CoQ10 & NAD+ precursors, post-meal glucose-buffering movement, photobiomodulation therapy, and non-pharmacologic deep-sleep architecture protocols.',
+      doc: 'Dr. Julian Ross, MD • Sports Medicine & Functional Health',
+      avatar: 'assets/images/doctor_julian.jpg',
+      quote: '"We monitored Sarah’s continuous HRV and nocturnal resting heart rate in real time via our clinic portal. Protocols were fine-tuned weekly, never in static 6-month silos."'
+    },
+    {
+      badge: 'SCENE 04 • BOUNDLESS VITALITY',
+      time: 'Month 6',
+      title: '6.7 Years Reduced Biological Age & Unlimited Daily Energy',
+      desc: 'Repeated multi-omic panels showed systemic inflammation plummeted to 0.4 mg/L. Deep sleep jumped from 32 minutes to 94 minutes nightly. Sarah returned to competitive half-marathon training with zero joint pain or brain fog.',
+      doc: 'Dr. Eleanor Vance, MD • Medical Director',
+      avatar: 'assets/images/hero_doctor.jpg',
+      quote: '"Sarah’s journey proves what medicine looks like when patients are treated as unique biological masterpieces, not 10-minute diagnostic checklists."'
+    }
+  ];
+
+  function renderModalScene(idx) {
+    const s = scenes[idx];
+    if (!s || !contentBox) return;
+
+    tabs.forEach((t, i) => {
+      t.classList.toggle('active', i === idx);
+    });
+
+    contentBox.innerHTML = `
+      <div class="story-scene-meta">
+        <span class="badge badge-pulse">${s.badge}</span>
+        <span class="story-scene-time">${s.time}</span>
+      </div>
+      <h3 class="story-scene-title">${s.title}</h3>
+      <p class="story-scene-desc">${s.desc}</p>
+      <div class="story-quote-card">
+        <div class="story-quote-avatar">
+          <img src="${s.avatar}" alt="${s.doc}" width="48" height="48">
+        </div>
+        <div>
+          <div class="story-quote-doc">${s.doc}</div>
+          <p class="story-quote-text">${s.quote}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = parseInt(tab.getAttribute('data-scene') || '0', 10);
+      renderModalScene(idx);
+    });
+  });
+
+  // Modal open / close handlers
+  const triggers = document.querySelectorAll('.btn-trigger-patient-story');
+  triggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.add('open');
+      renderModalScene(0);
+    });
+  });
+
+  const closeBtns = modal.querySelectorAll('.modal-close-trigger');
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modal.classList.remove('open');
+    });
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+}
+
+/* ==========================================================================
+   20. MOBILE POLISH & DYNAMIC VIEWPORT HEIGHT
+   ========================================================================== */
+
+function initMobileTouchPolish() {
+  // Mobile dynamic 100vh calculation (handles address bar expansion/contraction)
+  function setVh() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  setVh();
+  window.addEventListener('resize', setVh, { passive: true });
+  window.addEventListener('orientationchange', setVh, { passive: true });
+
+  // Close mobile drawer when clicking any anchor link or trigger
+  const drawer = document.querySelector('.mobile-nav-drawer');
+  const backdrop = document.querySelector('.mobile-nav-backdrop');
+  const toggleBtn = document.querySelector('.nav-toggle');
+
+  document.querySelectorAll('.mobile-menu-links a, .mobile-drawer-footer .btn').forEach(item => {
+    item.addEventListener('click', () => {
+      drawer?.classList.remove('open');
+      backdrop?.classList.remove('open');
+      toggleBtn?.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
 

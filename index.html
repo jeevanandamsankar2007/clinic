@@ -20,6 +20,77 @@
 </head>
 <body>
 
+  <!-- Ambient Glass Glow Orbs (Provides rich specular refraction through frosted glass cards) -->
+  <div class="glass-ambient-canvas" aria-hidden="true">
+    <div class="glass-ambient-orb glass-ambient-orb-1"></div>
+    <div class="glass-ambient-orb glass-ambient-orb-2"></div>
+    <div class="glass-ambient-orb glass-ambient-orb-3"></div>
+    <div class="glass-ambient-orb glass-ambient-orb-4"></div>
+  </div>
+
+  <!-- Storytelling HUD Floating Glass Capsule -->
+  <aside class="story-hud" id="storyHud" aria-label="Storytelling Mode Journey Guide" style="display: none;">
+    <div class="story-hud-inner">
+      <div class="story-hud-header">
+        <div class="story-hud-badge">
+          <span class="story-sparkle-dot"></span>
+          <span class="story-chapter-label" id="storyChapterLabel">SCENE 01 / 07</span>
+        </div>
+        <div class="story-hud-quick-actions">
+          <button type="button" class="story-tool-btn active" id="storyChimeBtn" aria-label="Toggle Crystal Tone Synth" title="Sound Effects">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18V5l12-2v13"></path>
+              <circle cx="6" cy="18" r="3"></circle>
+              <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+          </button>
+          <button type="button" class="story-tool-btn" id="storyVoiceBtn" aria-label="Toggle Speech Narration" title="Voice Read Aloud">
+            <svg class="story-voice-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </button>
+          <button type="button" class="story-tool-btn" id="storyAutoPlayBtn" aria-label="Toggle Auto-Play Guided Journey" title="Auto-Play Story">
+            <span class="story-autoplay-text">Auto</span>
+            <svg class="story-play-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </button>
+          <button type="button" class="story-tool-btn story-exit-btn" id="storyExitBtn" aria-label="Exit Story Mode" title="Exit Story Mode">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="story-hud-body">
+        <h3 class="story-hud-title" id="storyHudTitle">The Sanctuary of Human Healing</h3>
+        <p class="story-hud-quote" id="storyHudQuote">"Where medicine meets empathy. Step inside a sanctuary designed to listen before it prescribes."</p>
+      </div>
+
+      <div class="story-hud-progress-wrap">
+        <div class="story-hud-progress-track">
+          <div class="story-hud-progress-fill" id="storyHudProgressFill"></div>
+        </div>
+        <div class="story-hud-dots" id="storyHudDots"></div>
+      </div>
+
+      <div class="story-hud-footer">
+        <button type="button" class="btn-story-nav" id="storyPrevBtn" aria-label="Previous Scene">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Prev</span>
+        </button>
+        <button type="button" class="btn-story-walkthrough" id="openPatientStoryBtn">
+          <span>Sarah's Journey</span>
+          <span class="story-walkthrough-chip">Case Study</span>
+        </button>
+        <button type="button" class="btn-story-nav" id="storyNextBtn" aria-label="Next Scene">
+          <span>Next</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
   <!-- ==========================================================================
        1. NAVBAR (STICKY / FLOATING GLASSMORPHIC)
        ========================================================================== -->
@@ -55,8 +126,14 @@
         </ul>
       </nav>
 
-      <!-- Right: Action CTA, Theme Toggle & Mobile Trigger -->
+      <!-- Right: Action CTA, Story Mode, Theme Toggle & Mobile Trigger -->
       <div class="nav-actions">
+        <!-- Storytelling Mode Toggle Button -->
+        <button type="button" class="btn-story-mode-toggle" id="storyModeToggle" aria-label="Toggle Storytelling Mode" title="Experience Storytelling Journey">
+          <span class="story-sparkle">✨</span>
+          <span class="story-toggle-text">Story Mode</span>
+        </button>
+
         <!-- Dark / Light Theme Toggle -->
         <button type="button" class="theme-toggle-btn" id="themeToggle" aria-label="Switch between light and dark mode" title="Switch Theme">
           <span class="theme-icon sun-icon">
@@ -128,6 +205,18 @@
         </button>
       </div>
 
+      <!-- Mobile Story Mode Banner Card -->
+      <div class="mobile-story-card" id="mobileStoryBanner">
+        <div class="mobile-story-content">
+          <span class="mobile-story-pill">✨ Guided Journey</span>
+          <h4 class="mobile-story-title">Aura Storytelling Mode</h4>
+          <p class="mobile-story-desc">Immerse yourself in our human-centered clinical philosophy.</p>
+        </div>
+        <button type="button" class="btn btn-sm btn-story-mobile" id="mobileDrawerStoryBtn">
+          <span>Start Story</span>
+        </button>
+      </div>
+
       <ul class="mobile-menu-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Our Clinic</a></li>
@@ -164,11 +253,16 @@
   <!-- ==========================================================================
        2. HERO SECTION
        ========================================================================== -->
-  <section class="hero-section" id="home">
+  <section class="hero-section" id="home" data-story-chapter="1" data-story-title="The Sanctuary of Human Healing" data-story-quote="Where medicine meets empathy. Step inside a sanctuary designed to listen before it prescribes.">
     <div class="hero-bg-blob"></div>
     <div class="container hero-grid">
       <!-- Left Content -->
       <div class="hero-content">
+        <div class="story-chapter-pill">
+          <span class="story-live-dot"></span>
+          <span>SCENE 01 • THE SANCTUARY</span>
+        </div>
+
         <div class="badge badge-pulse hero-badge">
           YOUR HEALTH, OUR PRIORITY
         </div>
@@ -190,8 +284,13 @@
             </svg>
           </button>
           
+          <button type="button" class="btn btn-glass btn-lg btn-story-hero-trigger" id="heroStoryBtn">
+            <span class="story-sparkle">✨</span>
+            <span>Experience Story Mode</span>
+          </button>
+
           <a href="#treatments" class="btn btn-secondary btn-lg" id="heroExploreCta">
-            <span>Explore Our Services</span>
+            <span>Explore Services</span>
           </a>
         </div>
 
@@ -425,7 +524,7 @@
   <!-- ==========================================================================
        5. ABOUT THE CLINIC
        ========================================================================== -->
-  <section class="section about-section" id="about">
+  <section class="section about-section" id="about" data-story-chapter="2" data-story-title="Evidence & Human Trust" data-story-quote="Founded on clinical transparency, board-certified mastery, and patient-first medicine.">
     <div class="container about-grid">
       <!-- Left: Media Collage -->
       <div class="about-media-collage">
@@ -440,6 +539,10 @@
 
       <!-- Right: Content -->
       <div class="about-content">
+        <div class="story-chapter-pill">
+          <span class="story-live-dot"></span>
+          <span>SCENE 02 • EVIDENCE & TRUST</span>
+        </div>
         <span class="badge">ABOUT OUR CLINIC</span>
         <h2>Where expertise meets genuine care.</h2>
         <p>
@@ -484,9 +587,13 @@
   <!-- ==========================================================================
        6. SPECIALTIES / SERVICES
        ========================================================================== -->
-  <section class="section services-section" id="treatments">
+  <section class="section services-section" id="treatments" data-story-chapter="3" data-story-title="Intelligent Healing Pathways" data-story-quote="Precision medicine and intelligent navigation tailored to your unique biological blueprint.">
     <div class="container">
       <div class="section-header center">
+        <div class="story-chapter-pill center-pill">
+          <span class="story-live-dot"></span>
+          <span>SCENE 03 • INTELLIGENT HEALING</span>
+        </div>
         <span class="badge">COMPREHENSIVE DEPARTMENTS</span>
         <h2>Care for every stage of your health journey.</h2>
         <p>Multidisciplinary specialties under one roof, integrating evidence-based medicine with personalized wellness plans.</p>
@@ -773,9 +880,13 @@
   <!-- ==========================================================================
        7. FEATURED DOCTORS
        ========================================================================== -->
-  <section class="section doctors-section" id="doctors">
+  <section class="section doctors-section" id="doctors" data-story-chapter="4" data-story-title="The Healers & Pioneers" data-story-quote="Meet physicians who spend the time to understand your whole life story, not just your symptoms.">
     <div class="container">
       <div class="section-header center">
+        <div class="story-chapter-pill center-pill">
+          <span class="story-live-dot"></span>
+          <span>SCENE 04 • THE HEALERS</span>
+        </div>
         <span class="badge">OUR CLINICAL FACULTY</span>
         <h2>Meet the people behind your care.</h2>
         <p>Distinguished physicians who combine clinical rigor with genuine empathy and attentive listening.</p>
@@ -963,10 +1074,14 @@
   <!-- ==========================================================================
        9. FACILITIES (HORIZONTAL SCROLLING CAROUSEL)
        ========================================================================== -->
-  <section class="section facilities-section" id="facilities">
+  <section class="section facilities-section" id="facilities" data-story-chapter="5" data-story-title="Architecture of Tranquility" data-story-quote="Architectural calm meets cutting-edge diagnostic intelligence and zero-stress comfort.">
     <div class="container">
       <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem;">
         <div class="section-header" style="margin-bottom: 0;">
+          <div class="story-chapter-pill">
+            <span class="story-live-dot"></span>
+            <span>SCENE 05 • ARCHITECTURE OF CALM</span>
+          </div>
           <span class="badge">CAMPUS & INFRASTRUCTURE</span>
           <h2>Designed for calm, precision and safety.</h2>
           <p>Explore our purpose-built medical suites engineered for patient privacy, comfort, and state-of-the-art clinical efficacy.</p>
@@ -1049,9 +1164,13 @@
   <!-- ==========================================================================
        10. PATIENT JOURNEY (INTERACTIVE STEPPER)
        ========================================================================== -->
-  <section class="section journey-section" id="journey">
+  <section class="section journey-section" id="journey" data-story-chapter="6" data-story-title="Your Longevity Pathway" data-story-quote="From initial biomarker mapping to lifelong thriving vitality and cellular renewal.">
     <div class="container">
       <div class="section-header center">
+        <div class="story-chapter-pill center-pill">
+          <span class="story-live-dot"></span>
+          <span>SCENE 06 • THE LONGEVITY PATHWAY</span>
+        </div>
         <span class="badge">TRANSPARENT CARE PROTOCOL</span>
         <h2>How your health journey unfolds.</h2>
         <p>A seamless, predictable, and stress-free care experience from initial scheduling through lifelong recovery.</p>
@@ -1611,11 +1730,15 @@
   <!-- ==========================================================================
        15. CONTACT SECTION
        ========================================================================== -->
-  <section class="section contact-section" id="contact">
+  <section class="section contact-section" id="contact" data-story-chapter="7" data-story-title="Begin Your Healing Today" data-story-quote="Your journey to vitality begins with one conversation. Our concierge team is standing by.">
     <div class="container contact-grid">
       <!-- Left Column: Details & Hours -->
       <div class="contact-info-panel">
         <div>
+          <div class="story-chapter-pill">
+            <span class="story-live-dot"></span>
+            <span>SCENE 07 • BEGIN YOUR HEALING</span>
+          </div>
           <span class="badge">GET IN TOUCH</span>
           <h2>We are here for you.</h2>
           <p style="margin-bottom: 2rem;">Visit our modern clinical pavilion in the medical arts district, or connect with our concierge team for private scheduling.</p>
@@ -2399,6 +2522,170 @@
       </div>
     </div>
   </div>
+
+  <!-- ==========================================================================
+       8. INTERACTIVE PATIENT STORY MODAL (STORYTELLING WALKTHROUGH)
+       ========================================================================== -->
+  <div class="modal-overlay" id="patientStoryModal" role="dialog" aria-modal="true" aria-labelledby="patientStoryTitle">
+    <div class="modal-container patient-story-container">
+      <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close story modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header patient-story-header">
+        <div class="badge badge-mint">PATIENT TRANSFORMATION CHRONICLE</div>
+        <h2 id="patientStoryTitle" class="patient-story-heading">Sarah's Longevity Journey</h2>
+        <p class="patient-story-subhead">From chronic 3 PM fatigue and elevated systemic inflammation to boundless daily vitality.</p>
+      </div>
+
+      <div class="modal-body patient-story-body">
+        <!-- Interactive Scene Tabs -->
+        <div class="story-scene-tabs">
+          <button type="button" class="story-scene-tab active" data-scene="0">
+            <span class="scene-num">01</span>
+            <span class="scene-name">The Burnout</span>
+          </button>
+          <button type="button" class="story-scene-tab" data-scene="1">
+            <span class="scene-num">02</span>
+            <span class="scene-name">Deep Diagnostics</span>
+          </button>
+          <button type="button" class="story-scene-tab" data-scene="2">
+            <span class="scene-num">03</span>
+            <span class="scene-name">Targeted Care</span>
+          </button>
+          <button type="button" class="story-scene-tab" data-scene="3">
+            <span class="scene-num">04</span>
+            <span class="scene-name">Renewal</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Scene Card Display -->
+        <div class="story-scene-card" id="storySceneContent">
+          <div class="story-scene-meta">
+            <span class="badge badge-pulse">SCENE 01 • THE INITIAL CRISIS</span>
+            <span class="story-scene-time">Month 0</span>
+          </div>
+          <h3 class="story-scene-title">"I had seen four specialists who told me my standard blood tests were normal."</h3>
+          <p class="story-scene-desc">
+            At age 42, Sarah, an executive and mother of two, experienced severe unrefreshing sleep, midday brain fog, and chronic muscular tension. Traditional 8-minute appointments left her without actionable answers or root-cause insight.
+          </p>
+          <div class="story-quote-card">
+            <div class="story-quote-avatar">
+              <img src="assets/images/doctor_sarah.jpg" alt="Dr. Sarah Lin" width="48" height="48">
+            </div>
+            <div>
+              <div class="story-quote-doc">Dr. Sarah Lin, MD • Integrative Physician</div>
+              <p class="story-quote-text">"Standard reference ranges reflect population averages, not biological optimal health. When Sarah arrived at Aura, our first action was spending 90 unhurried minutes listening to her circadian history."</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biomarker Interactive Comparison -->
+        <div class="story-biomarker-card">
+          <div class="biomarker-header-row">
+            <h4>Documented Clinical Biomarkers</h4>
+            <span class="biomarker-chip">Verified Laboratory Evidence</span>
+          </div>
+          <div class="biomarker-items-grid">
+            <div class="biomarker-tile">
+              <span class="biomarker-label">High-Sensitivity CRP (Vascular Inflammation)</span>
+              <div class="biomarker-values">
+                <span class="biomarker-before">3.8 mg/L <em>(Elevated)</em></span>
+                <span class="biomarker-arrow">➔</span>
+                <span class="biomarker-after">0.4 mg/L <em>(Optimal)</em></span>
+              </div>
+              <div class="biomarker-track"><div class="biomarker-progress" style="width: 88%;"></div></div>
+            </div>
+
+            <div class="biomarker-tile">
+              <span class="biomarker-label">Epigenetic Biological Age (DNAm PhenoAge)</span>
+              <div class="biomarker-values">
+                <span class="biomarker-before">46.4 Yrs</span>
+                <span class="biomarker-arrow">➔</span>
+                <span class="biomarker-after">39.7 Yrs <em>(-6.7 Yrs)</em></span>
+              </div>
+              <div class="biomarker-track"><div class="biomarker-progress" style="width: 96%;"></div></div>
+            </div>
+
+            <div class="biomarker-tile">
+              <span class="biomarker-label">Deep Sleep & HRV Recovery</span>
+              <div class="biomarker-values">
+                <span class="biomarker-before">34 ms HRV</span>
+                <span class="biomarker-arrow">➔</span>
+                <span class="biomarker-after">72 ms HRV <em>(+112%)</em></span>
+              </div>
+              <div class="biomarker-track"><div class="biomarker-progress" style="width: 92%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story Action Bar -->
+        <div class="story-modal-action-bar">
+          <div>
+            <h4 style="font-size: 1.1rem; color: var(--text-dark);">Inspired to write your own healing story?</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Schedule a private consultation with our clinical directors.</p>
+          </div>
+          <button type="button" class="btn btn-primary btn-trigger-booking" onclick="document.getElementById('patientStoryModal').classList.remove('open'); openBookingModal({ service: 'Internal & Longevity Medicine' });">
+            Schedule Your Evaluation
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MOBILE GLASSMORPHIC BOTTOM NAVIGATION DOCK (PHONES & COMPACT SCREENS)
+       ========================================================================== -->
+  <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Mobile Navigation Bar">
+    <a href="#home" class="bottom-dock-item active" data-target="home">
+      <div class="dock-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <span class="dock-label">Home</span>
+    </a>
+
+    <a href="#treatments" class="bottom-dock-item" data-target="treatments">
+      <div class="dock-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+        </svg>
+      </div>
+      <span class="dock-label">Care</span>
+    </a>
+
+    <!-- Center Story Mode Trigger Pill -->
+    <button type="button" class="bottom-dock-item bottom-dock-story" id="mobileDockStoryBtn" aria-label="Toggle Story Mode">
+      <div class="dock-story-pill">
+        <span class="dock-sparkle">✨</span>
+      </div>
+      <span class="dock-label">Story</span>
+    </button>
+
+    <a href="#health-calculator" class="bottom-dock-item" data-target="health-calculator">
+      <div class="dock-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+      </div>
+      <span class="dock-label">Profiler</span>
+    </a>
+
+    <button type="button" class="bottom-dock-item bottom-dock-book btn-trigger-booking" aria-label="Book appointment">
+      <div class="dock-icon-wrap dock-book-accent">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+      </div>
+      <span class="dock-label">Book</span>
+    </button>
+  </nav>
 
   <!-- Scripts -->
   <script src="assets/js/main.js"></script>
